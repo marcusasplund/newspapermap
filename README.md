@@ -1,8 +1,16 @@
+[![GitHub issues](https://img.shields.io/github/issues/marcusasplund/newspapermap.svg)](https://github.com/marcusasplund/newspapermap/issues)
+[![Build status](https://travis-ci.org/marcusasplund/newspapermap.svg?branch=master)](https://travis-ci.org/marcusasplund/newspapermap)
+[![dependencies](https://david-dm.org/marcusasplund/hyperapp-todo-simple.svg)](https://david-dm.org/marcusasplund/hyperapp-todo-simple)
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/newspapermap.svg)](https://greenkeeper.io/)
+
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) 
+
 # newspapermap
 
 ## background
 In 2010 we made [https://newspapermap.com](https://newspapermap.com) because we wanted a good way to find international local news.
-In 2011 it got really popular and was featured in hundreds of newssites all over the world; from [https://www.theatlantic.com/technology/archive/2011/05/reading-the-worlds-press-from-luxembourg-to-djibouti/238943/](The Atlantic) to Yomiuri Shinbun and everything between.
+
+In 2011 it got really popular and was featured in hundreds of newssites all over the world; from [The Atlantic](https://www.theatlantic.com/technology/archive/2011/05/reading-the-worlds-press-from-luxembourg-to-djibouti/238943/) to Yomiuri Shinbun and everything between.
 
 It got a lot of love from libraries and [educational institutions](https://www.google.se/search?q=site:.edu+newspapermap.com)
 
@@ -22,10 +30,12 @@ The new version is (for a start) mostly written in javascript with a little help
 ## FAQ
 
 Q: -Oh, can i have access to all your data for commercial purposes?
+
 A: -Nope.
 
 Q: -Oh, can i have access to all or a subset of your data for scientific/educational purposes?
-A: -Probably. Email details to newspapermap@gmail.com and we will come back.
+
+A: -Probably. Email details to newspapermap@gmail.com and we will get back to you.
 
 ## todo
 
