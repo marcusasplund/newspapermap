@@ -35,7 +35,7 @@ A: -Nope.
 
 Q: -Oh, can i have access to all or a subset of your data for scientific/educational purposes?
 
-A: -Probably. Email details to newspapermap@gmail.com and we will come back.
+A: -Probably. Email details to newspapermap@gmail.com and we will get back to you.
 
 ## todo
 
