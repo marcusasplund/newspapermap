@@ -44,7 +44,7 @@ let parser = new RSSParser({
 // let updateLink = `https://docs.google.com/forms/d/e/1FAIpQLSeF1qlsi5u187HW0TfvtKD6mbwCs50SYVAfDFA3TYnoB40xnA/viewform?formkey=dF9Rd2lBMDI1RjdLODVaeWh5UXBMZVE6MQ`
 
 const formatDate = (d) => {
-  d = d.replace(/\./g,'-') // sometimes we have strange dot separators
+  d = d.replace(/\./g, '-') // sometimes we have strange dot separators
   d = new Date(d)
   return dayjs(d).fromNow()
 }
