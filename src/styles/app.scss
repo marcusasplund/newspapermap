@@ -11,7 +11,7 @@ html, body {
   position: relative;
   width: 100%;
 }
-body {
+body, input, .ap-input {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
 }
 header {
@@ -32,7 +32,7 @@ header {
   background-color: transparent;
   border: none;
 }
-.input,
+input,
 .ap-input {
   font-size: 1.5rem;
   font-weight: 400;
