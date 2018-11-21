@@ -1,9 +1,9 @@
 [![GitHub issues](https://img.shields.io/github/issues/marcusasplund/newspapermap.svg)](https://github.com/marcusasplund/newspapermap/issues)
 [![Build status](https://travis-ci.org/marcusasplund/newspapermap.svg?branch=master)](https://travis-ci.org/marcusasplund/newspapermap)
 [![dependencies](https://david-dm.org/marcusasplund/hyperapp-todo-simple.svg)](https://david-dm.org/marcusasplund/hyperapp-todo-simple)
+[![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/newspapermap.svg)](https://greenkeeper.io/)
 
-
-[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) [![Greenkeeper badge](https://badges.greenkeeper.io/marcusasplund/newspapermap.svg)](https://greenkeeper.io/)
+[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) 
 
 # newspapermap
 
