@@ -9,7 +9,8 @@
 
 ## background
 In 2010 we made [https://newspapermap.com](https://newspapermap.com) because we wanted a good way to find international local news.
-In 2011 it got really popular and was featured in hundreds of newssites all over the world; from [https://www.theatlantic.com/technology/archive/2011/05/reading-the-worlds-press-from-luxembourg-to-djibouti/238943/](The Atlantic) to Yomiuri Shinbun and everything between.
+
+In 2011 it got really popular and was featured in hundreds of newssites all over the world; from [The Atlantic](https://www.theatlantic.com/technology/archive/2011/05/reading-the-worlds-press-from-luxembourg-to-djibouti/238943/) to Yomiuri Shinbun and everything between.
 
 It got a lot of love from libraries and [educational institutions](https://www.google.se/search?q=site:.edu+newspapermap.com)
 
