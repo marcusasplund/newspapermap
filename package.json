@@ -1,0 +1,44 @@
+{
+  "homepage": "https://github.com/marcusasplund/newspapermap#readme",
+  "license": "MIT",
+  "main": "src/index.js",
+  "name": "analytics",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/marcusasplund/newspapermap.git"
+  },
+  "scripts": {
+    "start": "standard && parcel src/index.html -p 3000 --open",
+    "build": "standard && parcel build src/index.html -d release --public-url ./"
+  },
+  "version": "0.0.1",
+  "author": "Marcus Asplund <marcus@itcm.se> (@marcusasplund)",
+  "bugs": {
+    "url": "https://github.com/marcusasplund/newspapermap/issues"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.2",
+    "@babel/preset-env": "7.1.0",
+    "babel-eslint": "^10.0.1",
+    "node-sass": "^4.10.0",
+    "parcel-bundler": "^1.10.3",
+    "standard": "*"
+  },
+  "standard": {
+    "parser": "babel-eslint",
+    "ignore": [
+      "dist/",
+      "release/"
+    ]
+  },
+  "dependencies": {
+    "dayjs": "^1.7.7",
+    "google-charts": "^1.5.0",
+    "hyperapp": "1.2.9",
+    "milligram": "^1.3.0",
+    "places.js": "^1.13.0",
+    "rss-parser": "^3.5.3",
+    "tinygesture": "^1.1.4",
+    "unfetch": "^4.0.1"
+  }
+}
