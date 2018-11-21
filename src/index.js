@@ -44,9 +44,15 @@ let parser = new RSSParser({
 // let updateLink = `https://docs.google.com/forms/d/e/1FAIpQLSeF1qlsi5u187HW0TfvtKD6mbwCs50SYVAfDFA3TYnoB40xnA/viewform?formkey=dF9Rd2lBMDI1RjdLODVaeWh5UXBMZVE6MQ`
 
 const formatDate = (d) => {
+  if (!d) {
+    return ''
+  }
   d = d.replace(/\./g, '-') // sometimes we have strange dot separators
   d = new Date(d)
-  return dayjs(d).fromNow()
+  if (d !== 'Invalid Date') {
+    return dayjs(d).fromNow()
+  }
+  return ''
 }
 
 const state = getStateFromStorage() || {
@@ -487,7 +493,7 @@ const view = (state, actions) =>
           }),
           h('p', {
             class: 'rss-date'
-          }, formatDate(p.pubDate || p.date))
+          }, formatDate(p.pubDate || p.date || ''))
         ]))
       ])
     ])
