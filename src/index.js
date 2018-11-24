@@ -17,12 +17,6 @@ GoogleCharts.load('current', {
   packages: ['corechart']
 })
 
-if (!window.Promise) {
-  let promisePoly = document.createElement('script')
-  promisePoly.src = './promise.min.js'
-  document.head.appendChild(promisePoly)
-}
-
 let autocomplete
 
 let map
