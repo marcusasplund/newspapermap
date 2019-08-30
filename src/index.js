@@ -25,11 +25,11 @@ let layer
 
 let gesture
 
-const tableId = `1j9UyXqpptoye5aBkQP7l5vMNql83kPrImLMhGgo`
+const tableId = '1j9UyXqpptoye5aBkQP7l5vMNql83kPrImLMhGgo'
 
 const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
 
-let parser = new RSSParser({
+const parser = new RSSParser({
   headers: {
     'X-requested-with': 'something different'
   }
@@ -83,16 +83,16 @@ const actions = {
   },
 
   updateHash: () => (state, actions) => {
-    let a = map.getCenter().lat().toPrecision(7)
-    let b = map.getCenter().lng().toPrecision(7)
-    let c = map.getZoom()
+    const a = map.getCenter().lat().toPrecision(7)
+    const b = map.getCenter().lng().toPrecision(7)
+    const c = map.getZoom()
     window.location.hash = '@' + a + ',' + b + ',' + c + 'z'
   },
 
   getData: (a) => (state, actions) => {
-    let fname = a.getDataTable().getValue(0, 0)
-    let lat = a.getDataTable().getValue(0, 1)
-    let lng = a.getDataTable().getValue(0, 2)
+    const fname = a.getDataTable().getValue(0, 0)
+    const lat = a.getDataTable().getValue(0, 1)
+    const lng = a.getDataTable().getValue(0, 2)
     map.setZoom(19)
     map.setCenter(new google.maps.LatLng(lat, lng))
     layer.setMap(null)
@@ -101,7 +101,7 @@ const actions = {
   },
 
   changeData: (a) => (state, actions) => {
-    let q = encodeURIComponent('SELECT Name, Lat, Long FROM ' + tableId + " WHERE Name CONTAINS IGNORING CASE '" + a + "'")
+    const q = encodeURIComponent('SELECT Name, Lat, Long FROM ' + tableId + " WHERE Name CONTAINS IGNORING CASE '" + a + "'")
     new google.visualization.Query('https://www.google.com/fusiontables/gvizdata?tq=' + q).send(actions.getData)
   },
 
@@ -125,17 +125,17 @@ const actions = {
     google.maps.event.addListener(layer, 'click', (e) => {
       console.log(e.row)
       actions.set({
-        paper: e.row['namn'].value,
-        url: e.row['description'].value,
-        city: e.row['city'].value,
-        country: e.row['country'].value,
-        rss: e.row['rss'].value,
-        language: e.row['language'].value,
+        paper: e.row.namn.value,
+        url: e.row.description.value,
+        city: e.row.city.value,
+        country: e.row.country.value,
+        rss: e.row.rss.value,
+        language: e.row.language.value,
         isClosed: false,
         posts: []
       })
-      if (e.row['rss'].value) {
-        parser.parseURL(CORS_PROXY + e.row['rss'].value, (err, feed) => {
+      if (e.row.rss.value) {
+        parser.parseURL(CORS_PROXY + e.row.rss.value, (err, feed) => {
           if (err) {
             console.error(err)
           } else {
@@ -169,17 +169,17 @@ const actions = {
     console.log(value)
     value = value.charAt(0).toUpperCase() + value.slice(1)
     // Retrieve the unique store names using GROUP BY workaround.
-    let queryText = encodeURIComponent(
+    const queryText = encodeURIComponent(
       "SELECT 'Name' " +
         'FROM ' + tableId + " WHERE 'namn' CONTAINS IGNORING CASE '" + value + "'")
-    let query = new GoogleCharts.api.visualization.Query(
+    const query = new GoogleCharts.api.visualization.Query(
       'https://www.google.com/fusiontables/gvizdata?tq=' + queryText)
     console.log(query)
     query.send((response) => {
-      let numRows = response.getDataTable().getNumberOfRows()
+      const numRows = response.getDataTable().getNumberOfRows()
 
       // Create the list of results for display of autocomplete.
-      let results = []
+      const results = []
       for (let i = 0; i < numRows; i++) {
         results.push(response.getDataTable().getValue(i, 0))
       }
@@ -194,7 +194,7 @@ const actions = {
   },
 
   renderMap: (el) => (state, actions) => {
-    let url = window.location.hash
+    const url = window.location.hash
     let params
     let position = state.position
     let zoom = state.zoom
@@ -221,7 +221,7 @@ const actions = {
       center: new google.maps.LatLng(position.lat, position.lng),
       zoom: zoom
     })
-    let style = [{
+    const style = [{
       featureType: 'water',
       stylers: [
         {
@@ -298,7 +298,7 @@ const actions = {
       ]
     }
     ]
-    let styledMapType = new google.maps.StyledMapType(style, {
+    const styledMapType = new google.maps.StyledMapType(style, {
       map: map,
       name: 'Styled Map'
     })
@@ -306,8 +306,8 @@ const actions = {
     map.setMapTypeId('map-style')
     actions.newLayer('')
     map.addListener('center_changed', () => {
-      let center = map.getCenter()
-      let zoom = map.getZoom()
+      const center = map.getCenter()
+      const zoom = map.getZoom()
       actions.set({
         position: {
           lat: center.lat(),
@@ -318,8 +318,8 @@ const actions = {
       actions.updateHash()
     })
     map.addListener('zoom_changed', () => {
-      let center = map.getCenter()
-      let zoom = map.getZoom()
+      const center = map.getCenter()
+      const zoom = map.getZoom()
       actions.set({
         position: {
           lat: center.lat(),
@@ -338,7 +338,7 @@ const actions = {
 
   changeLangKey: (value) => (state, actions) => {
     console.log(state.url)
-    let url = `https://translate.google.com/translate?hl=${value}&sl=auto&tl=${value}&u=${state.url}`
+    const url = `https://translate.google.com/translate?hl=${value}&sl=auto&tl=${value}&u=${state.url}`
     actions.goto(url)
   },
 
@@ -360,7 +360,7 @@ const actions = {
   },
 
   changeLanguage: (lang) => (state, actions) => {
-    let query = `language CONTAINS '${lang}'`
+    const query = `language CONTAINS '${lang}'`
     actions.newLayer(query)
   },
 
@@ -422,7 +422,8 @@ const view = (state, actions) =>
             placeholder: 'Paper',
             list: 'suggestions',
             oninput: ({ target }) => actions.autoComplete(target.value),
-            onchange: ({ target }) => actions.changeData(target.value) }, [
+            onchange: ({ target }) => actions.changeData(target.value)
+          }, [
             h('datalist', {
               id: 'suggestions'
             }, [
@@ -455,7 +456,7 @@ const view = (state, actions) =>
         h('button', {
           class: 'close',
           onclick: e => actions.set({ isClosed: true })
-        }, `x`),
+        }, 'x'),
         h('p', {}, [
           h('a', {
             class: 'sidebar-title',
