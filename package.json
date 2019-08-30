@@ -38,7 +38,6 @@
     "milligram": "^1.3.0",
     "places.js": "^1.16.4",
     "rss-parser": "^3.7.2",
-    "tinygesture": "^1.1.4",
-    "unfetch": "^4.1.0"
+    "tinygesture": "^1.1.4"
   }
 }

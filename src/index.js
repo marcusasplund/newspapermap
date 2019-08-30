@@ -67,7 +67,7 @@ const actions = {
 
   initSwipeSupport: (el) => (state, actions) => {
     const gesture = new TinyGesture(el)
-    gesture.on('swipeleft swipedown', event => {
+    gesture.on('swipeleft swipedown', () => {
       actions.set({
         isClosed: true
       })
