@@ -17,13 +17,9 @@ GoogleCharts.load('current', {
   packages: ['corechart']
 })
 
-let autocomplete
-
 let map
 
 let layer
-
-let gesture
 
 const tableId = '1j9UyXqpptoye5aBkQP7l5vMNql83kPrImLMhGgo'
 
@@ -70,7 +66,7 @@ const actions = {
   set: x => x,
 
   initSwipeSupport: (el) => (state, actions) => {
-    gesture = new TinyGesture(el)
+    const gesture = new TinyGesture(el)
     gesture.on('swipeleft swipedown', event => {
       actions.set({
         isClosed: true
@@ -343,7 +339,7 @@ const actions = {
   },
 
   attachSearch: (el) => (state, actions) => {
-    autocomplete = places.default({
+    const autocomplete = places.default({
       container: el,
       type: 'city'
       // countries: ['se', 'fi', 'no', 'dk', 'is']
