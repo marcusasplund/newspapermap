@@ -1,0 +1,63 @@
+
+<!DOCTYPE html> 
+<!-- Copyright 2010 Google Inc.
+ 
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+ 
+     http://www.apache.org/licenses/LICENSE-2.0
+ 
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License. --> 
+<html> 
+  <head> 
+    <title>Two page search example - results</title> 
+    <script src="http://www.google.com/jsapi" type="text/javascript"></script> 
+    <script type="text/javascript"> 
+      google.load('search', '1', {language : 'sv', style : google.loader.themes.MINIMALIST});
+ 
+      /**
+       * Extracts the users query from the URL.
+       */ 
+      function getQuery() {
+        var url = '' + window.location;
+        var queryStart = url.indexOf('?') + 1;
+        if (queryStart > 0) {
+          var parts = url.substr(queryStart).split('&');
+          for (var i = 0; i < parts.length; i++) {
+            if (parts[i].length > 2 && parts[i].substr(0, 2) == 'q=') {
+              return decodeURIComponent(
+                  parts[i].split('=')[1].replace(/\+/g, ' '));
+            }
+          }
+        }
+        return '';
+      }
+ 
+      function onLoad() {
+        // Create a custom search control that uses a CSE restricted to
+        // code.google.com
+		var customSearchControl = new google.search.CustomSearchControl('001282870027659013129:hdv6urhaama');
+customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+ 
+        var drawOptions = new google.search.DrawOptions();
+        drawOptions.setAutoComplete(true);
+ 
+        // Draw the control in content div
+        customSearchControl.draw('results', drawOptions);
+ 
+        // Run a query
+        customSearchControl.execute(getQuery());
+      }
+ 
+      google.setOnLoadCallback(onLoad);
+    </script> 
+  </head> 
+  <body> 
+    <div id="results">Loading...</div> 
+  </body> 
+</html> 

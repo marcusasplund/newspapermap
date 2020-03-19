@@ -1,0 +1,167 @@
+<!doctype html>
+<!--[if lt IE 9]> <html class="ie" lang="ko"> <![endif]-->
+<!--[if gt IE 8]><!--> <html itemscope itemtype="http://schema.org/" class=no-js lang=ko id=newspapermap-com/KO> <!--<![endif]-->
+<head>
+<meta charset=utf-8>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]-->
+<title>newspaper map | KO</title>
+<meta name=viewport content="width=device-width,initial-scale=1">
+<meta name=apple-mobile-web-app-capable content=yes>
+<meta name=apple-mobile-web-app-status-bar-style content="translucent black">
+<meta name=author content=greatname.se>
+<meta name=description content="newspaper map KO | 신문지도 | 10000 세계의 + 온라인 신문 한 번의 클릭으로 번역">
+<meta name=keywords content="세계에서 가장 큰 신문 사이트 - 온라인 신문, 번역, 신문, 역사 신문, 신문, 신문지도 newspapermap, 킨들, pressdisplay, ipad, 신문, 구글,지도, 세계, 뉴스, 번역">
+<meta name=robots content=all>
+<link rel=icon href=favicon.ico>
+<link rel=apple-touch-icon href=N57.png>
+<link rel=apple-touch-icon sizes=72x72 href=N72.png />
+<link rel=apple-touch-icon sizes=114x114 href=N114.png />
+<meta property=og:image content="http://newspapermap.com/N114.png"/>
+<link rel=image_src href="http://newspapermap.com/N114.png"/>
+<meta itemprop=name content="newspaper map | KO">
+<meta itemprop=description content="newspaper map KO | 신문지도 | 10000 세계의 + 온라인 신문 한 번의 클릭으로 번역">
+<meta itemprop=image content="http://newspapermap.com/N114.png">
+<script>var myScreen=screen.width;if(myScreen<699)if(confirm('당신은 모바일 장치와 여기에 온 것 같습니다. 모바일 버전에 대한 확인을 클릭하십시오.')){window.location.href='http://newspapermap.com/KOmobil.html';}</script>
+<link rel="stylesheet" href="css/comp4.css">
+<script src="js/modernizr-2.0.min.js"></script>
+</head>
+<body onLoad="initialize()">
+<div id=fb-root></div>
+<script>(function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(d.getElementById(id)){return;}
+js=d.createElement(s);js.id=id;js.async=true;js.src="//connect.facebook.net/ko_KR/all.js#xfbml=1&appId=136294166472604";fjs.parentNode.insertBefore(js,fjs);}(document,'script','facebook-jssdk'));</script>
+<div id=map_canvas></div>
+<div id=main>
+<h1><a href="http://newspapermap.com/KO.html" target=_top title="신문지도">newspaper map | KO</a></h1>
+<p>t10000 개 이상의 신문!</p>
+<div class=map_form>
+<input type=search name=paper title="특정 신문에 대한 검색, 선택을 선택하고 Enter 키를 누르거나 버튼" value="신문을 검색, 선택하고를 누릅니다" id=paper class=search onClick="if (this.value=='신문을 검색, 선택하고를 누릅니다') {this.value='';}" onKeyDown="if (event.keyCode==13) changeData(this.value);" autocomplete=off>
+<button class="primary button" title="검색을 제출하려면 클릭하십시오" onClick="changeData(document.getElementById('paper').value);">검색</button>
+</div>
+<div class="map_form block">
+<input class=search type=search title="인스턴트 장소를 검색하거나 주소" value="장소 또는 주소로 이동" onFocus="if (this.value=='장소 또는 주소로 이동') {this.value='';}" maxlength=2048 tabindex=1 autocomplete=off id=search></div>
+<span id=suggestion></span>
+<br>
+<div class=block>
+<form>
+<select id=lang onChange="changeMap0();" title="선택한 언어에서만 신문을 보여주 선택 모든 언어">
+<option value="">언어로 필터</option>
+<option value=Galician>갈리 시아</option>
+<option value=Guarani>과라니어</option>
+<option value=Gujarati>구자라트어</option>
+<option value=Greek>그리스의</option>
+<option value=Dutch>네덜란드</option>
+<option value=Nepali>네팔어</option>
+<option value=Norwegian>노르웨이의</option>
+<option value=Danish>덴마크의</option>
+<option value=German>독일의</option>
+<option value=Latvian>라트비아</option>
+<option value=Russian>러시아의</option>
+<option value=Romanian>루마니아</option>
+<option value=Lithuanian>리투아니아의</option>
+<option value=Marathi>마라타어</option>
+<option value=Macedonian>마케도니아의</option>
+<option value=Malayalam>말라얄람어</option>
+<option value=Malay>말레이 사람</option>
+<option value=Manx>맨섬어</option>
+<option value=Maltese>몰티즈</option>
+<option value=Vietnamese>베트남 사람</option>
+<option value=Bengali>벵골 사람</option>
+<option value=Bulgarian>불가리아 사람</option>
+<option value=Serbian>세르비아의</option>
+<option value=Shona>션</option>
+<option value=Somali>소말리어</option>
+<option value=Swahili>스와힐리어</option>
+<option value=Swedish>스웨덴어</option>
+<option value=Spanish>스페인어</option>
+<option value=Slovak>슬로바키아어</option>
+<option value=Slovenian>슬로베니아</option>
+<option value=Sinhala>신할라 사람</option>
+<option value=Arabic>아랍어</option>
+<option value=Assamese>아삼어</option>
+<option value=Icelandic>아이슬란드의</option>
+<option value=Afrikaans>아프리카 어</option>
+<option value=Albanian>알바니아</option>
+<option value=Estonian>에스 토니아 사람</option>
+<option value=English>영어</option>
+<option value=Oriya>오리야어</option>
+<option value=Urdu>우르 두말</option>
+<option value=Ukrainian>우크라이나의</option>
+<option value=Yiddish>이디시 말의</option>
+<option value=Italian>이탈리아의</option>
+<option value=Hindi>인도</option>
+<option value=Indonesian>인도네시아의</option>
+<option value=Japanese>일본어</option>
+<option value=Chinese>중국어</option>
+<option value=Czech>체코어</option>
+<option value=Catalan>카탈로니아의</option>
+<option value=Kannada>칸나다어</option>
+<option value=Kurdish>쿠르드 사람의</option>
+<option value=Croatian>크로아티아의</option>
+<option value=Khmer>크메르어</option>
+<option value=Tamil>타밀 사람</option>
+<option value=Thai>타이어</option>
+<option value=Turkish>터키어</option>
+<option value=Telugu>텔루구어</option>
+<option value=Tibetan>티베트어</option>
+<option value=Punjabi>펀자브</option>
+<option value=Persian>페르시아의</option>
+<option value=Portuguese>포르투갈어</option>
+<option value=Polish>폴란드의</option>
+<option value=French>프랑스의</option>
+<option value=Finnish>핀란드의</option>
+<option value=Korean>한국의</option>
+<option value=Hungarian>헝가리어</option>
+<option value=Hebrew>히브리어</option>
+<option value=Papiamento>Papiamentu</option>
+</select>
+</form>
+</div>
+<div class=block>
+<b>&nbsp;</b>
+<div id=buttonset>
+<button name=scale style=width:4em class="left button" title="모든 신문을 보려면 클릭" onClick="changeMap6();">모든</button>
+<button name=scale style=width:6em class="middle button" title="단 주요 신문보기 클릭" onClick="changeMap7();">전용 대형</button>
+<button name=scale style=width:6em class="middle button" onClick="changeMap8();" title="역사 신문 BETA">역사적인</button>
+<button name=scale style=width:4em class="middle button" onClick="window.location.href='http://newspapermap.com/add'" title="광고에서 무료로 무료로 유지하는 우리에게 도움을 주셔서 감사합니다">기부</button>
+<button name=scale style=width:9em class="right button" onClick="window.location.href='http://newspapermap.com/add'" title="데이터를 추가 또는 수정,Ajouter ou corriger un journal, Add or correct a newspaper,Añadir o corregir un periódico,Adicionar ou corrigir um jornal,Aggiungere o correggere un giornale,Добавить или исправить газеты,Dodaj lub korygowania gazety,إضافة أو تصحيح صحيفة,补充或更正报纸,Eklemek veya gazete doğru,追加や新聞を修正">추가 또는 수정</button>
+</div>
+</div>
+<h4><a href="http://facebook.com/newspapermap" title="페이스 북은 다음과">facebook</a>
+|
+<a href="https://plus.google.com/100127923130643146741/" title="구글 플러스는 다음과">google+</a>
+|
+<a href="https://twitter.com/intent/user?original_referer=http%3A%2F%2Fnewspapermap.com%2FKO.html%2F&amp;region=screen_name&amp;screen_name=newspapermap&amp;source=followbutton&amp;variant=1.0" title="Suivez-nous sur twitter">twitter</a>
+|
+<a href="http://www.addthis.com/bookmark.php?url=http://newspapermap.com/&amp;title=10000%20세계의%20+%20온라인%20신문%20한%20번의%20클릭으로%20번역" title="이것은 공유">addThis</a></h4>
+<div class=fb-like data-href="http://newspapermap.com/" data-send=false data-layout=button_count data-width=50 data-show-faces=false></div>
+<div class=gplus>
+<g:plusone></g:plusone>
+</div>
+<div class=twitter>
+<a href="https://twitter.com/share?url=http%3A%2F%2Fnewspapermap.com" data-lang=ko class=twitter-share-button data-count=horizontal data-text="(http://newspapermap.com/KO.html 한국어 버전e)" data-via=newspapermap>Tweet</a>
+<script src="http://platform.twitter.com/widgets.js"></script>
+</div>
+</div>
+<script src="https://www.google.com/jsapi?"></script>
+<script>google.load('maps','3.7',{other_params:'sensor=false&language=ko'});google.load('jquery','1');google.load('visualization','1.1',{});</script>
+<script>var roadAtlasStyles=[{featureType:'all',elementType:'all',stylers:[{saturation:-80},{lightness:-40},{gamma:0.6}]},{featureType:"water",elementType:"all",stylers:[{saturation:0},{lightness:70}]}];var layer;var tableid=552892;var tableid2=874780;var zoom=3;var latlng=new google.maps.LatLng(37.0,-5.6);var suggestion;var ne;var sw;var tabkey;var regex1;var query="";$('#search').live('keydown',function(e){var keyCode=e.keyCode||e.which;if(keyCode==9){e.preventDefault();if(suggestion){regex1=new RegExp("^"+$('#search').val()+"(.*?)( |$)","ig");tabkey=suggestion.match(regex1);$("#search").val(tabkey);}}});function initialize(){getParams();map=new google.maps.Map(document.getElementById('map_canvas'),{center:latlng,zoom:zoom,minZoom:2,mapTypeControl:true,mapTypeControlOptions:{style:google.maps.MapTypeControlStyle.DEFAULT,mapTypeIds:[google.maps.MapTypeId.SATELLITE,'usroadatlas'],position:google.maps.ControlPosition.TOP_RIGHT},scrollwheel:true,navigationControl:true,navigationControlOptions:{style:google.maps.NavigationControlStyle.SMALL,position:google.maps.ControlPosition.TOP_RIGHT}});var styledMapOptions={name:"신문지도"};var usRoadMapType=new google.maps.StyledMapType(roadAtlasStyles,styledMapOptions);map.mapTypes.set('usroadatlas',usRoadMapType);map.setMapTypeId('usroadatlas'),google.maps.event.addListener(map,'center_changed',function(){updateHash();});google.maps.event.addListener(map,'zoom_changed',function(){updateHash();});geocoder=new google.maps.Geocoder();layer=new google.maps.FusionTablesLayer(tableid);if(query){layer.setQuery(query);}
+layer.setMap(map);$('#search').keyup(primaryFunction);$('#search').submit(primaryFunction);var legendDiv=document.createElement('DIV');var legend=new Legend(legendDiv,map);legendDiv.index=1;map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legendDiv);}
+function Legend(controlDiv,map){controlDiv.style.padding='7px';var controlUI=document.createElement('DIV');controlUI.style.background='rgba(0,0,0,0.8) url("bg.png") 0 0 no-repeat';controlUI.style.borderRadius='3px';controlUI.title='newspaper map 다른 언어로';controlDiv.appendChild(controlUI);var controlText=document.createElement('DIV');controlText.style.fontFamily='Arial,sans-serif';controlText.style.color='#fff';controlText.style.fontSize='10px';controlText.style.paddingLeft='20px';controlText.style.paddingRight='3px';controlText.style.paddingTop='10px';controlText.innerHTML='<a title="newspapermap.com" href="http://newspapermap.com">영어 | English</a><br/>'+'<a title="newsapp.es" href="http://newspapermap.com/ES.html"> 스페인어 | Español</a><br/>'+'<a title="plan de journaux" href="http://newspapermap.com/FR.html"> 프랑스의 | Française</a><br/>'+'<a title="mapa do jornais" href="http://newspapermap.com/PT.html"> 포르투갈어 | Português</a><br/>'+'<a title="zeitungskarte.de" href="http://zeitungskarte.de"> 독일의 | Deutsch</a><br/>'+'<a  title="Газета карта" href="http://newspapermap.com/RU.html"> 러시아의 | Pусский</a><br/>'+' <a  title="newsapp.jp" href="http://newspapermap.com/JA.html"> 일본어 | 日本</a><br/>'+'<a  title="صحيفة الخريطة" href="http://newspapermap.com/AR.html"> 아랍어 | العربية</a><br/>'+'한국의<br/>'+'Autres<br/>';controlUI.appendChild(controlText);}
+function changeData(fname){var queryText=encodeURIComponent("SELECT Name, Lat, Long FROM "+tableid+" WHERE Name CONTAINS IGNORING CASE '"+fname+"'");var query=new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='+queryText);query.send(getData);}
+function getData(response){fname=response.getDataTable().getValue(0,0);lat=response.getDataTable().getValue(0,1);lon=response.getDataTable().getValue(0,2);map.setZoom(19);map.setCenter(new google.maps.LatLng(lat,lon));layer.setQuery("SELECT lat_long FROM "+tableid+" WHERE Name CONTAINS '"+fname+"'");layer.setMap(map);layer2.setMap(null);}
+function changeMap0(){lang=document.getElementById("lang").value;layer.setQuery("SELECT lat_long FROM "+tableid+" WHERE language CONTAINS '"+lang+"'");layer.setMap(map);layer2.setMap(null);}
+function changeMap10(){filter=document.getElementById("filter").value;layer.setQuery("SELECT lat_long FROM "+tableid+" WHERE '"+filter+"' = '"+filter+"'");layer.setMap(map);layer2.setMap(null);}
+function changeMap6(){layer.setQuery("SELECT lat_long FROM  "+tableid+"");layer.setMap(map);layer2.setMap(null);}
+function changeMap7(){layer.setQuery("SELECT lat_long FROM "+tableid+" WHERE large = 'large'");layer.setMap(map);layer2.setMap(null);}
+function changeMap8(){layer.setMap(null);layer2=new google.maps.FusionTablesLayer(tableid2);layer2.setMap(map);}
+function primaryFunction(){var searchtext=$('#search').val();$.ajax({type:"GET",url:"http://maps-api-ssl.google.com/maps/suggest?hl=ko&gl=ko&v=3.7&json=b&auth=ABQIAAAAALakLdjjlTHt7ZswQah3VRQhzk0B9PQtvkZRIRmh2TMWxDe2yRSKq5BP3oJYSnI5FTbfuS_Rdg8dEQ&src=1,2&num=5&numps=5&callback=handleResponse&q="+$('#search').val()+"&cp="+$('#search').val().length,dataType:"script",queue:"SUG1",cancelExisting:true});}
+handleResponse={};handleResponse=function(sugdat){DIR1b4=suggestion;suggestion=parse(sugdat);DIR1now=suggestion;if(DIR1b4!=DIR1now){updateHTML('suggestion',suggestion);codeAddress(suggestion);}};function updateHTML(elmId,value){document.getElementById(elmId).innerHTML=value;}
+function parse(_sugdat){if(_sugdat["suggestion"][0]["query"]){return _sugdat["suggestion"][0]["query"];}else{return null;}}
+function codeAddress(_sug){var address=_sug;geocoder.geocode({'address':address},function(results,status){if(status==google.maps.GeocoderStatus.OK){var ne=results[0].geometry.viewport.getNorthEast();var sw=results[0].geometry.viewport.getSouthWest();map.fitBounds(results[0].geometry.viewport);layer.setQuery("SELECT lat_long FROM  "+tableid+"");layer.setMap(map);layer2.setMap(null);var boundingBoxPoints=[ne,new google.maps.LatLng(ne.lat(),sw.lng()),sw,new google.maps.LatLng(sw.lat(),ne.lng()),ne];}});}
+function updateHash(){var slat=map.getCenter().lat();var slong=map.getCenter().lng();var mapzoom=map.getZoom();window.location.hash="slat="+slat+"&slong="+slong+"&zoom="+mapzoom;}
+function getParams(){var url=window.location.hash;if(url!=""){params=url.split("&");slat=params[0].split("=")[1];slong=params[1].split("=")[1];latlng=new google.maps.LatLng(slat,slong);zoom=parseInt(params[2].split("=")[1]);}}</script>
+<script src="js/jquery.autocompleteMOD.js"></script>
+<script>$().ready(function(){$("#paper").autocomplete("searchUS.php",{selectFirst:false});});window.___gcfg={lang:'ko'};(function(){var po=document.createElement('script');po.type='text/javascript';po.async=true;po.src='https://apis.google.com/js/plusone.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(po,s);})();var _gaq=[['_setAccount','UA-19887300-3'],['_trackPageview'],['_setDomainName','none'],['_setAllowLinker',true],['_trackPageLoadTime']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));</script>
+<!--[if lt IE 7 ]> <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script> <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script> <![endif]-->
+</body>
+</html>

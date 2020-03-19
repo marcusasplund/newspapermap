@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<CustomSearchEngine id="qoprah_qhyg" creator="001282870027659013129" keywords="한국 신문 검색, 기사 검색 iphone, 한국 신문 검색, pad, jQuerymobile, webapp, android, symbian, blackberry&quot;" language="ko" encoding="UTF-8" enable_suggest="true">
+  <Title>All 모든</Title>
+  <Description>한국 신문 검색</Description>
+  <Context>
+    <Facet>
+      <FacetItem>
+        <Label name="조선_일보" mode="FILTER">
+        </Label>
+        <Title>조선 일보</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="중앙 일보" mode="FILTER">
+        </Label>
+        <Title>중앙 일보</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="국민_일보" mode="FILTER">
+        </Label>
+        <Title>국민 일보</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="문화_일보" mode="FILTER">
+        </Label>
+        <Title>문화 일보</Title>
+      </FacetItem>
+    </Facet>
+    <Facet>
+      <FacetItem>
+        <Label name="동아_일보" mode="FILTER">
+        </Label>
+        <Title>동아 일보</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="kdn" mode="FILTER">
+        </Label>
+        <Title>KDN</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="경향 신문" mode="FILTER">
+        </Label>
+        <Title>경향 신문</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="매일_비즈니스_신문" mode="FILTER">
+        </Label>
+        <Title>매일 비즈니스 신문</Title>
+      </FacetItem>
+    </Facet>
+    <Facet>
+      <FacetItem>
+        <Label name="한국_일보" mode="FILTER">
+        </Label>
+        <Title>한국 일보</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="코리아_헤럴드" mode="FILTER">
+        </Label>
+        <Title>코리아 헤럴드</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="segye_타임즈" mode="FILTER">
+        </Label>
+        <Title>Segye 타임즈</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="ohmy_뉴스" mode="FILTER">
+        </Label>
+        <Title>Ohmy 뉴스</Title>
+      </FacetItem>
+    </Facet>
+    <Facet>
+      <FacetItem>
+        <Label name="한겨레_신문" mode="FILTER">
+        </Label>
+        <Title>한겨레 신문</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="tkt" mode="FILTER">
+        </Label>
+        <Title>TKT</Title>
+      </FacetItem>
+      <FacetItem>
+        <Label name="서울_타임즈" mode="FILTER">
+        </Label>
+        <Title>서울 타임즈</Title>
+      </FacetItem>
+    </Facet>
+    <BackgroundLabels>
+      <Label name="_cse_qoprah_qhyg" mode="FILTER" />
+      <Label name="_cse_exclude_qoprah_qhyg" mode="ELIMINATE" />
+	 <Label name="recent4" mode="BOOST" />
+    </BackgroundLabels>
+  </Context>
+  <LookAndFeel code="4" nonprofit="false" googlebranding="watermark" element_layout="1" theme="6" custom_theme="true" text_font="Verdana, sans-serif" url_length="full" enable_cse_thumbnail="true">
+    <Logo />
+    <Colors url="#5F6A73" background="#DAE0E5" border="#DAE0E5" title="#0568CD" text="#5F6A73" visited="#0568CD" title_hover="#0568CD" title_active="#0568CD" />
+    <Promotions title_color="#0066CC" title_visited_color="#0066CC" url_color="#5F6A73" background_color="#D0D1D4" border_color="#D2D6DC" snippet_color="#333333" title_hover_color="#0066CC" title_active_color="#0066CC" />
+    <SearchControls input_border_color="#8A99A6" button_border_color="#8A99A6" button_background_color="#D0D1D4" tab_border_color="#B2BDC6" tab_background_color="#B2BDC6" tab_selected_border_color="#8A99A6" tab_selected_background_color="#8A99A6" />
+    <Results border_color="#FFFFFF" border_hover_color="#ffffff" background_color="#FFFFFF" background_hover_color="#EDEDED" />
+  </LookAndFeel>
+  <AdSense>
+    <Client id="pub-5086036261939117">
+      <Channel id="919662422" />
+    </Client>
+  </AdSense>
+  <EnterpriseAccount />
+</CustomSearchEngine>

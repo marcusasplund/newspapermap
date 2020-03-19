@@ -1,0 +1,420 @@
+<!doctype html>
+<!--[if lt IE 9]> <html class="ie" lang="fr"> <![endif]-->
+<!--[if gt IE 8]><!--> <html itemscope itemtype="http://schema.org/" class=no-js lang=fr id=newspapermap-com/FR> <!--<![endif]-->
+<head>
+<meta charset=utf-8>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]-->
+    <title>newspaper map | FR</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+       <meta name="author" content="greatname.se">
+        <meta name="description" content="plan de journaux | retrouvez tous les journaux du monde entier, et accédez à leur traduction en ligne">
+         <meta name="keywords" content="Plus grand site de journal dans le monde - les journaux en ligne, traduisait des journaux, des journaux historiques, journaux, carte de journaux, newspapermap, Kindle, PressDisplay, étuis, les journaux, Google, cartes, monde, des nouvelles, de traduire">
+          <meta name="robots" content="all">
+           <link rel="icon" href="favicon.ico">
+            <link rel="apple-touch-icon" href="N57.png">
+             <link rel="apple-touch-icon" sizes="72x72" href="N72.png"/>
+             <link rel="apple-touch-icon" sizes="114x114" href="N114.png"/>
+             <meta property="og:image" content="http://newspapermap.com/N114.png"/>
+             <link rel="image_src" href="http://newspapermap.com/N114.png"/>
+             <meta itemprop="name" content="newspaper map">
+              <meta itemprop="description" content="newspaper map | retrouvez tous les journaux du monde entier, et accédez à leur traduction en ligne">
+               <meta itemprop="image" content="http://newspapermap.com/N114.png">
+                <base target="main">
+                 <script>
+                  var myScreen = screen.width;
+                  if (myScreen < 699) if (confirm('Il semble que vous sont venus ici avec un appareil mobile. Cliquez sur OK pour une version mobile.')) {
+                   window.location.href = 'http://newspapermap.com/FRmobil.html';
+                  }
+                 </script>
+                 <link rel="stylesheet" href="css/comp4.css">
+                  <script src="js/modernizr-2.0.min.js"></script>
+                 </head>
+                 <body ONLOAD="initialize()">
+                  <div id="fb-root"></div>
+                  <script>
+                   (function (d, s, id) {
+                    var js,
+                     fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                     return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.async = true;
+                    js.src = "//connect.facebook.net/fr_FR/all.js#xfbml=1&appId=136294166472604";
+                    fjs.parentNode.insertBefore(js, fjs);
+                   }(document, 'script', 'facebook-jssdk'));
+                  </script>
+                  <div id="map_canvas"></div>
+                  <div id="main">
+                   <h1><a href="http://newspapermap.com/FR.html" target="_top" title="Accueil">newspaper map | FR</a></h1>
+                   <p>trouver et de traduire 10 000 + journaux</p>
+                   <div class="map_form">
+                    <input type="search" name="paper" title="Recherche pour un journal spécifique, choisissez un choix et tapez ENTER ou sur le bouton" value="Rechercher et choisissez" id="paper" class="search" onClick="if (this.value=='Rechercher et choisissez') {this.value='';}" onKeyDown="if (event.keyCode==13) changeData(this.value);" autocomplete="off">
+                     <button class="primary button" title="Cliquez pour soumettre la recherche" onClick="changeData(document.getElementById('paper').value);" style="width:70px;font-size:10px;padding-left:3px;">RECHERCHE</button>
+                    </div>
+                    <div class="map_form block">
+                     <input class="search" type="search" title="Recherche instantanée d'un lieu ou une adresse" value="aller à un endroit ou à l adresse" onFocus="if (this.value=='aller à un endroit ou à l adresse') {this.value='';}" maxlength="2048" tabindex="1" autocomplete="off" id="search"></div>
+                     <span id="suggestion"></span>
+                     <br>
+                      <div class="block">
+                       <form>
+                        <select id="lang" onChange="changeMap0();" title="Permet d'afficher les journaux que dans la langue choisie">
+                         <option value="">filtrer par langue</option>
+                         <option value="Afrikaans">Afrikaans</option>
+                         <option value="Albanian">Albanaises</option>
+                         <option value="German">Allemande</option>
+                         <option value="English">Anglaise</option>
+                         <option value="Arabic">Arabe</option>
+                         <option value="Assamese">Assamais</option>
+                         <option value="Bengali">Bengali</option>
+                         <option value="Bulgarian">Bulgares</option>
+                         <option value="Catalan">Catalane</option>
+                         <option value="Chinese">Chinoise</option>
+                         <option value="Sinhala">Cinghalais</option>
+                         <option value="Korean">Coréennes</option>
+                         <option value="Croatian">Croate</option>
+                         <option value="Danish">Danoises</option>
+                         <option value="Spanish">Espagnole</option>
+                         <option value="Estonian">Estonien</option>
+                         <option value="Finnish">Finlandaise</option>
+                         <option value="French">Française</option>
+                         <option value="Galician">Galice</option>
+                         <option value="Gujarati">Goudjrati</option>
+                         <option value="Greek">Grecques</option>
+                         <option value="Guarani">Guarani</option>
+                         <option value="Hindi">Hindi</option>
+                         <option value="Dutch">Hollandaise</option>
+                         <option value="Hungarian">Hongroises</option>
+                         <option value="Indonesian">Indonésienne</option>
+                         <option value="Icelandic">Islandaise</option>
+                         <option value="Italian">Italienne</option>
+                         <option value="Japanese">Japonaise</option>
+                         <option value="Kannada">Kannada</option>
+                         <option value="Khmer">Khmer</option>
+                         <option value="Kurdish">Kurdes</option>
+                         <option value="Latvian">Letton</option>
+                         <option value="Hebrew">L'hébreu</option>
+                         <option value="Lithuanian">Lituanie</option>
+                         <option value="Macedonian">Macédoniennes</option>
+                         <option value="Malay">Malais</option>
+                         <option value="Malayalam">Malayalam</option>
+                         <option value="Maltese">Maltais</option>
+                         <option value="Manx">Manx</option>
+                         <option value="Marathi">Marathi</option>
+                         <option value="Nepali">Népalais</option>
+                         <option value="Norwegian">Norvégiennes</option>
+                         <option value="Oriya">Oriya</option>
+                         <option value="Urdu">Ourdou</option>
+                         <option value="Papiamento">Papiamento</option>
+                         <option value="Persian">Persique</option>
+                         <option value="Polish">Polonaise</option>
+                         <option value="Portuguese">Portugaise</option>
+                         <option value="Punjabi">Punjabi</option>
+                         <option value="Romanian">Roumaine</option>
+                         <option value="Russian">Russes</option>
+                         <option value="Serbian">Serbes</option>
+                         <option value="Shona">Shona</option>
+                         <option value="Slovak">Slovaques</option>
+                         <option value="Slovenian">Slovènes</option>
+                         <option value="Somali">Somaliens</option>
+                         <option value="Swedish">Suédoises</option>
+                         <option value="Swahili">Swahili</option>
+                         <option value="Tamil">Tamil</option>
+                         <option value="Czech">Tchèque</option>
+                         <option value="Telugu">Telugu</option>
+                         <option value="Thai">Thaïlandaise</option>
+                         <option value="Tibetan">Tibétains</option>
+                         <option value="Turkish">Turque</option>
+                         <option value="Ukrainian">Ukrainiens</option>
+                         <option value="Vietnamese">Vietnamienne</option>
+                         <option value="Yiddish">Yiddish</option>
+                        </select>
+                       </form>
+                      </div>
+                      <div class="block">
+                       <b>&nbsp;</b>
+                       <div id="buttonset">
+                        <button name="scale" style="width:4em" class="left button" title="Cliquez pour voir l'ensemble des journaux" onClick="changeMap6();">tous</button>
+                        <button name="scale" style="width:5em" class="middle button" title="Cliquez pour afficher uniquement les principaux journaux" onClick="changeMap7();">majeurs</button>
+                        <button name="scale" style="width:6em" class="middle button" onClick="changeMap8();" title="Journaux historiques BETA">historiques</button>
+                        <button name="scale" style="width:5em" class="middle button" onClick="window.location.href='http://newspapermap.com/add'" title="Merci de garder Plan journal gratuit et libre à partir des annonces">donner</button>
+                        <button name="scale" style="width:6em" class="right button" onClick="window.location.href='http://newspapermap.com/add'" title=",Ajouter ou corriger un journal, Add or correct a newspaper,Añadir o corregir un periódico,Adicionar ou corrigir um jornal,Aggiungere o correggere un giornale,Добавить или исправить газеты,Dodaj lub korygowania gazety,إضافة أو تصحيح صحيفة,补充或更正报纸,Eklemek veya gazete doğru,追加や新聞を修正">ajou./corr.</button>
+                       </div>
+                      </div>
+                      <h4><a href="http://facebook.com/newspapermap" title="Suivez-nous sur facebook">facebook</a>
+                       |
+                       <a href="https://plus.google.com/100127923130643146741/" title="Suivez-nous sur G+">google+</a>
+                       |
+                       <a href="https://twitter.com/intent/user?original_referer=http%3A%2F%2Fnewspapermap.com%2FFR.html%2F&amp;region=screen_name&amp;screen_name=newspapermap&amp;source=followbutton&amp;variant=1.0" title="Suivez-nous sur twitter">twitter</a>
+                       |
+                       <a href="http://www.addthis.com/bookmark.php?url=http://newspapermap.com/&amp;title=retrouvez%20tous%20les%20journaux%20du%20monde%20entier,%20et%20accédez%20à%20leur%20traduction%20en%20ligne" title="Partager cette page">addThis</a></h4>
+                      <div class="fb-like" data-href="http://newspapermap.com/" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
+                      <div class="gplus">
+                       <g:plusone></g:plusone>
+                      </div>
+                      <div class="twitter">
+                       <a href="https://twitter.com/share?url=http%3A%2F%2Fnewspapermap.com" data-lang="fr" class="twitter-share-button" data-count="horizontal" data-text="(http://newspapermap.com/FR.html version française)" data-via="newspapermap">Tweet</a>
+                       <script src="http://platform.twitter.com/widgets.js"></script>
+                      </div>
+                     </div>
+                     <script src="https://www.google.com/jsapi?"></script>
+                     <script>
+                      google.load('maps', '3.7', {
+                       other_params: 'sensor=false&language=fr'
+                      });
+                      google.load('jquery', '1');
+                      google.load('visualization', '1.1', {});
+                     </script>
+                     <script>
+                      var roadAtlasStyles = [{
+                        featureType: 'all',
+                        elementType: 'all',
+                        stylers: [{
+                         saturation: -80
+                        },
+                        {
+                         lightness: -40
+                        },
+                        {
+                         gamma: 0.6
+                        }]
+                       },
+                       {
+                        featureType: "water",
+                        elementType: "all",
+                        stylers: [{
+                         saturation: 0
+                        },
+                        {
+                         lightness: 70
+                        }]
+                       }];
+                      var layer;
+                      var tableid = 552892;
+                      var tableid2 = 874780;
+                      var zoom = 6;
+                      var latlng = new google.maps.LatLng(47.23449, 2.515869);
+                      var suggestion;
+                      var ne;
+                      var sw;
+                      var tabkey;
+                      var regex1;
+                      var query = "";
+                      $('#search').live('keydown', function (e) {
+                       var keyCode = e.keyCode || e.which;
+                       if (keyCode == 9) {
+                        e.preventDefault();
+                        if (suggestion) {
+                         regex1 = new RegExp("^" + $('#search').val() + "(.*?)( |$)", "ig");
+                         tabkey = suggestion.match(regex1);
+                         $("#search").val(tabkey);
+                        }
+                       }
+                      });
+                      function initialize() {
+                       getParams();
+                       map = new google.maps.Map(document.getElementById('map_canvas'), {
+                        center: latlng,
+                        zoom: zoom,
+                        minZoom: 2,
+                        mapTypeControl: true,
+                        mapTypeControlOptions: {
+                         style: google.maps.MapTypeControlStyle.DEFAULT,
+                         mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'usroadatlas'],
+                         position: google.maps.ControlPosition.TOP_RIGHT
+                        },
+                        scrollwheel: true,
+                        navigationControl: true,
+                        navigationControlOptions: {
+                         style: google.maps.NavigationControlStyle.SMALL,
+                         position: google.maps.ControlPosition.TOP_RIGHT
+                        }
+                       });
+                       var styledMapOptions = {
+                         name: "Newspaper Map"
+                        };
+                       var usRoadMapType = new google.maps.StyledMapType(
+                        roadAtlasStyles, styledMapOptions);
+                       map.mapTypes.set('usroadatlas', usRoadMapType);
+                       map.setMapTypeId('usroadatlas'),
+                       google.maps.event.addListener(map, 'center_changed', function () {
+                        updateHash();
+                       });
+                       google.maps.event.addListener(map, 'zoom_changed', function () {
+                        updateHash();
+                       });
+                       geocoder = new google.maps.Geocoder();
+                       layer = new google.maps.FusionTablesLayer(tableid);
+                       if (query) {
+                        layer.setQuery(query);
+                       }
+                       layer.setMap(map);
+                       $('#search').keyup(primaryFunction);
+                       $('#search').submit(primaryFunction);
+                       var legendDiv = document.createElement('DIV');
+                       var legend = new Legend(legendDiv, map);
+                       legendDiv.index = 1;
+                       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legendDiv);
+                      }
+                      function Legend(controlDiv, map) {
+                       controlDiv.style.padding = '7px';
+                       var controlUI = document.createElement('DIV');
+                       controlUI.style.background = 'rgba(0,0,0,0.8) url("bg.png") 0 0 no-repeat';
+                       controlUI.style.borderRadius = '3px';
+                       controlUI.title = 'newspaper map dans dautres langues';
+                       controlDiv.appendChild(controlUI);
+                       var controlText = document.createElement('DIV');
+                       controlText.style.fontFamily = 'Arial,sans-serif';
+                       controlText.style.color = '#fff';
+                       controlText.style.fontSize = '10px';
+                       controlText.style.paddingLeft = '20px';
+                       controlText.style.paddingRight = '3px';
+                       controlText.style.paddingTop = '10px';
+                       controlText.innerHTML = '<a title="newspapermap.com" href="http://newspapermap.com">Anglais | English</a><br/>' + '<a title="newsapp.es" href="http://newspapermap.com/ES.html"> Espagnole | Español</a><br/>' + ' Française<br/>' + '<a title="mapa do jornais" href="http://newspapermap.com/PT.html"> Portuguese | Português</a><br/>' + '<a title="zeitungskarte.de" href="http://zeitungskarte.de"> Allemande | Deutsch</a><br/>' + '<a  title="Газета карта" href="http://newspapermap.com/RU.html"> Russian | Pусский</a><br/>' + ' <a  title="newsapp.jp" href="http://newspapermap.com/JA.html"> Japonaise | 日本</a><br/>' + '<a  title="صحيفة الخريطة" href="http://newspapermap.com/AR.html"> Arabe | العربية</a><br/>' + '<a  title="신문지도" href="http://newspapermap.com/KO.html"> Coréen | 한국의</a><br/>' + 'Autres<br/>';
+                       controlUI.appendChild(controlText);
+                      }
+                      function changeData(fname) {
+                       var queryText = encodeURIComponent("SELECT Name, Lat, Long FROM " + tableid + " WHERE Name CONTAINS IGNORING CASE '" + fname + "'");
+                       var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
+                       query.send(getData);
+                      }
+                      function getData(response) {
+                       fname = response.getDataTable().getValue(0, 0);
+                       lat = response.getDataTable().getValue(0, 1);
+                       lon = response.getDataTable().getValue(0, 2);
+                       map.setZoom(19);
+                       map.setCenter(new google.maps.LatLng(lat, lon));
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE Name CONTAINS '" + fname + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap0() {
+                       lang = document.getElementById("lang").value;
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE language CONTAINS '" + lang + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap10() {
+                       filter = document.getElementById("filter").value;
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE '" + filter + "' = '" + filter + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap6() {
+                       layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap7() {
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE large = 'large'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap8() {
+                       layer.setMap(null);
+                       layer2 = new google.maps.FusionTablesLayer(tableid2);
+                       layer2.setMap(map);
+                      }
+                      function primaryFunction() {
+                       var searchtext = $('#search').val();
+                       $.ajax({
+                        type: "GET",
+                        url: "http://maps-api-ssl.google.com/maps/suggest?hl=fr&gl=fr&v=3.7&json=b&auth=ABQIAAAAALakLdjjlTHt7ZswQah3VRQhzk0B9PQtvkZRIRmh2TMWxDe2yRSKq5BP3oJYSnI5FTbfuS_Rdg8dEQ&src=1,2&num=5&numps=5&callback=handleResponse&q=" + $('#search').val() + "&cp=" + $('#search').val().length,
+                        dataType: "script",
+                        queue: "SUG1",
+                        cancelExisting: true
+                       });
+                      }
+                      handleResponse = {};
+                      handleResponse = function (sugdat) {
+                       DIR1b4 = suggestion;
+                       suggestion = parse(sugdat);
+                       DIR1now = suggestion;
+                       if (DIR1b4 != DIR1now) {
+                        updateHTML('suggestion', suggestion);
+                        codeAddress(suggestion);
+                       }
+                      };
+                      function updateHTML(elmId, value) {
+                       document.getElementById(elmId).innerHTML = value;
+                      }
+                      function parse(_sugdat) {
+                       if (_sugdat["suggestion"][0]["query"]) {
+                        return _sugdat["suggestion"][0]["query"];
+                       } else {
+                        return null;
+                       }
+                      }
+                      function codeAddress(_sug) {
+                       var address = _sug;
+                       geocoder.geocode({
+                        'address': address
+                       }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                         var ne = results[0].geometry.viewport.getNorthEast();
+                         var sw = results[0].geometry.viewport.getSouthWest();
+                         map.fitBounds(results[0].geometry.viewport);
+                         layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+                         layer.setMap(map);
+                         layer2.setMap(null);
+                         var boundingBoxPoints = [
+                          ne, new google.maps.LatLng(ne.lat(), sw.lng()), sw, new google.maps.LatLng(sw.lat(), ne.lng()), ne];
+                        }
+                       });
+                      }
+                      function updateHash() {
+                       var slat = map.getCenter().lat();
+                       var slong = map.getCenter().lng();
+                       var mapzoom = map.getZoom();
+                       window.location.hash = "slat=" + slat + "&slong=" + slong + "&zoom=" + mapzoom;
+                      }
+                      function getParams() {
+                       var url = window.location.hash;
+                       if (url != "") {
+                        params = url.split("&");
+                        slat = params[0].split("=")[1];
+                        slong = params[1].split("=")[1];
+                        latlng = new google.maps.LatLng(slat, slong);
+                        zoom = parseInt(params[2].split("=")[1]);
+                       }
+                      }
+                     </script>
+                     <script src="js/jquery.autocompleteMOD.js"></script>
+                     <script>
+                      $().ready(function () {
+                       $("#paper").autocomplete("searchUS.php", {
+                        selectFirst: false
+                       });
+                      });
+                      window.___gcfg = {
+                       lang: 'fr'
+                      };
+                      (function () {
+                       var po = document.createElement('script');
+                       po.type = 'text/javascript';
+                       po.async = true;
+                       po.src = 'https://apis.google.com/js/plusone.js';
+                       var s = document.getElementsByTagName('script')[0];
+                       s.parentNode.insertBefore(po, s);
+                      })();
+                      var _gaq = [
+                        ['_setAccount', 'UA-19887300-3'],
+                        ['_trackPageview'],
+                        ['_setDomainName', 'none'],
+                        ['_setAllowLinker', true],
+                        ['_trackPageLoadTime']
+                       ];
+                      (function (d, t) {
+                       var g = d.createElement(t),
+                        s = d.getElementsByTagName(t)[0];
+                       g.async = 1;
+                       g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+                       s.parentNode.insertBefore(g, s)
+                      }(document, 'script'));
+                     </script>
+                     <!--[if lt IE 7 ]> <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script> <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script> <![endif]-->
+                    </body>
+                   </html>

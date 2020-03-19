@@ -17,15 +17,35 @@ const markers = L.markerClusterGroup({
   maxClusterRadius: 40 // default 80
 })
 
+const dict = {
+  en: 'English',
+  fr: 'Francais'
+}
+
+const translateLink = (record, language) => {
+  return `<a
+    target="_blank"
+    rel="noopener noreferrer"
+    href="https://translate.google.com/translate?hl=${language}&sl=auto&tl=${language}&u=${record.u}">
+    <h5>
+      ${dict[language]}
+    </h5>
+  </a>`
+}
 // Create popupcontent for marker
-const content = (record) => `<div class='wrapper'>
-<div><b>Updated:</b></div><div>${record.updated || 'N/A'}</div>
-<div><b>Type:</b></div><div>${record.type || 'N/A'}</div>
+const content = (record, language) => `<div>
+<a href='${record.u}'><h3>${record.n}</h3></a>
+${
+  language !== record.l
+  ? translateLink(record, language)
+  : ''
+}
+<small>( ${record.l} )</small>
 </div>`
 
 const ensureArray = (records) => Array.isArray(records) ? records : [records]
 
-const createMarkers = (records) => {
+const createMarkers = (records, language) => {
   // remove old markers
   markers.clearLayers()
   // check if we have any records
@@ -50,7 +70,7 @@ const createMarkers = (records) => {
             iconSize: iconSize,
             html: html,
             iconAnchor: iconAnchor,
-            popupAnchor: popupAnchor(),
+            popupAnchor: popupAnchor,
             className: 'dummy' // hack to remove default square css
           })
 
@@ -59,7 +79,7 @@ const createMarkers = (records) => {
             lat, lng
           ], { icon: mapIcon, data: record })
           // bind content to marker
-          marker.bindPopup(content(record))
+          marker.bindPopup(content(record, language))
           // add marker to cluster
           markers.addLayer(marker)
         }
@@ -105,17 +125,24 @@ const Leaflet = (L => {
 })(L)
 
 const InitialState = {
-  records: []
+  records: [],
+  language: 'en'
 }
+
+// const ChangeLanguage = (state, e) => {
+//   const language = e.target.value
+//   createMarkers(state.records, language)
+//   return { ...state, ...{ language: language } }
+// }
 
 const AddRecords = (state, response) => {
   const result = ensureArray(response.records)
-  createMarkers(result)
+  createMarkers(result, state.language)
   return { ...state, ...{ records: result } }
 }
 
 const ApiUrl = (state) => {
-  return 'https://pap.as/api/index.php/records/newspapermap?'
+  return 'https://pap.as/api/index.php/records/newspapermap?include=lat,lng,n,u,l'
 }
 
 const GetRecords = state => [
@@ -127,6 +154,12 @@ const GetRecords = state => [
   })
 ]
 
+// <select
+// onChange={ChangeLanguage}
+// >
+// <option value='en'>English</option>
+// <option value='fr'>French</option>
+// </select>
 // view
 const View = state => (
   <main>

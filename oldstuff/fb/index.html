@@ -1,0 +1,152 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class=no-js lang=en>
+<!--<![endif]-->
+<head>
+<meta charset=utf-8>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]-->
+<title>likes</title>
+<meta name=description content="fb">
+<meta name=author content="Marcus Asplund">
+<meta name=viewport content="width=device-width,initial-scale=1">
+<script src="js/modernizr-2.0.min.js"></script>
+<link href="http://fonts.googleapis.com/css?family=Lobster" rel=stylesheet>
+<link href="http://fonts.googleapis.com/css?family=Vollkorn" rel=stylesheet>
+<link rel=stylesheet href="css/screen.css">
+<meta name="robots" content="all">
+<link rel="icon" href="favicon.ico">
+<meta property="og:image" content="http://newspapermap.com/N114.png">
+</head>
+<body>
+<div class=container id=hide>
+<header>
+<div id=fb-like-example></div>
+<h1 class="like_number" title="http://newspapermap.com"></h1>
+</header>
+<section id=circles>
+<ul>
+<li><a href="http://newspapermap.com" class="transition"><svg id=svgelem1 height=200 xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient id=gradient1 cx="50%" cy="50%" r="50%" fx="100%" fy="100%">
+<stop offset="5%" style="stop-color:rgb(255,0,255);
+      stop-opacity:0.3"/>
+<stop offset="95%" style="stop-color:rgb(255,0,0);
+      stop-opacity:0.5"/>
+</radialgradient>
+</defs>
+<ellipse cx=100 cy=100 rx=100 ry=100 style="fill:url(#gradient1)"/>
+</svg></a></li>
+<li><a href="http://greatname.se" class="transition"><svg id=svgelem2 height=200 xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient id=gradient2 cx="50%" cy="50%" r="50%" fx="100%" fy="10%">
+<stop offset="5%" style="stop-color:rgb(255,255,255);
+      stop-opacity:0.6"/>
+<stop offset="95%" style="stop-color:rgb(255,255,0);
+      stop-opacity:0.5"/>
+</radialgradient>
+</defs>
+<ellipse cx=100 cy=100 rx=100 ry=100 style="fill:url(#gradient2)"/>
+</svg></a></li>
+<li><a href="http://artikelsok.se" class="transition"><svg id=svgelem3 height=200 xmlns="http://www.w3.org/2000/svg">
+<defs>
+<radialgradient id=gradient3 cx="50%" cy="50%" r="50%" fx="100%" fy="100%">
+<stop offset="5%" style="stop-color:rgb(255,255,0);
+      stop-opacity:0.6"/>
+<stop offset="95%" style="stop-color:rgb(0,255,0);
+      stop-opacity:0.5"/>
+</radialgradient>
+</defs>
+<ellipse cx=100 cy=100 rx=100 ry=100 style="fill:url(#gradient3)"/>
+</svg></a></li>
+</ul>
+</section>
+<footer>
+<!--<p id=footer-text>The number of<br/>
+ facebook likes for:<br/>newspapermap.com<br/>updated in realtime</p> -->
+<ul id="routing">
+    <li><a href="http://digg.com/search?q=newspapermap" id="digg">Digg</a></li>
+    <li><a href="https://delicious.com/search?p=newspapermap" id="delicious">Delicious</a></li>
+    <li><a href="http://tweetmeme.com/story/3835156339/newspapermap-all-onlinenewspapers-in-the-world" id="tweetmeme">Tweetmeme</a></li>
+    <li><a href="http://topsy.com/s/newspapermap.com/tweet?window=a" id="topsy">Topsy</a></li>
+</ul>
+</footer>
+
+</div>
+<script src="js/lettering_jquery.171.compiled.js"></script>
+    <script>
+    $(document).ready(function() {
+        url = "http://newspapermap.com/";
+        beforecounter = " <b>";
+        aftercounter = "</b>";
+ 
+        // Get Number of Diggs
+        $.getJSON('http://services.digg.com/1.0/endpoint?method=story.getAll&link='+url+'&type=javascript&callback=?',
+            function(data) {
+                $('#digg').append(beforecounter + data.stories[0].diggs + aftercounter);
+        });
+ 
+        // Get Number of Delicious Bookmarks
+        $.getJSON('http://feeds.delicious.com/v2/json/urlinfo/data?url='+url+'&callback=?',
+            function(data) {
+                $('#delicious').append(beforecounter + data[0].total_posts + aftercounter);
+        });
+ 
+        // Get Number of Tweet Count From TweetMeme
+        $.getJSON('http://api.tweetmeme.com/url_info.jsonc?url='+url+'&callback=?',
+            function(data) {
+                $('#tweetmeme').append(beforecounter + data.story.url_count + aftercounter);
+        });
+
+        $.getJSON('http://otter.topsy.com/stats.js?url='+url+'&callback=?',
+            function(data) {
+                $('#topsy').append(beforecounter + data.response.all + aftercounter);
+        });
+
+    })
+    </script>
+<script>
+(function($){
+	$.fn.fblikecount = function(options){
+		var defaults = {
+			baseUrl: 'http://graph.facebook.com/?ids='
+		};
+		var options = $.extend(defaults, options);
+		var count = 0;
+		return this.each(function(){
+			var $this = $(this);
+			$this.hide();
+			var objLink = $(this).attr('title');
+			if(objLink.indexOf('http') === 0){
+				$.getJSON(defaults.baseUrl + objLink + '&callback=?', function(json){
+					if(json[objLink] && json[objLink].shares){
+						$this.append(+json[objLink].shares);
+						$this.show();
+					}
+					//if(json[objLink] && json[objLink].comments){
+					//	$this.append(' comments: '+json[objLink].comments);	
+					//}
+					//$this.show();
+				});				
+			}
+		});
+	}
+})(jQuery);
+$(window).load(function(){		   
+	$("h1.like_number").fblikecount();
+	$(".like_number").css("visibility","visible");
+});
+</script>
+<script src="js/easing.js"></script>
+<script src="js/jquery.onefblikev1.0.min.js"></script>
+
+<script>$(document).ready(function(){function a(){window.location=linkLocation}$("body").css("display","none");$("body").fadeIn(500);$("a.transition").click(function(b){b.preventDefault();linkLocation=this.href;$("body").fadeOut(500,a)})});$(document).ready(function(){$("#top").lettering();$(".circle-name").lettering("words");$("#footer-text").lettering("lines")});$(document).ready(function(){$("#fb-like-example").oneFBLike()});</script>
+<script>var _gaq=[['_setAccount','UA-28240591-1'],['_trackPageview']];(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';s.parentNode.insertBefore(g,s)}(document,'script'));</script>
+<!--[if lt IE 7 ]>
+	<script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script>
+	<script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script>
+<![endif]-->
+</body>
+</html>

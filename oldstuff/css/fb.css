@@ -1,0 +1,23 @@
+@charset "utf-8";
+/* CSS Document */
+#header {
+	text-align:center;
+background-color:#3B5998;
+display:inline;
+float:left;
+position:absolute;
+left:0px;
+top:0px;
+height:36px;
+width:100%;
+padding-top:3px;
+}
+
+#cse {
+display:inline;
+float:left;
+position:absolute;
+left:30%;
+top:55px;
+width:600px;
+}

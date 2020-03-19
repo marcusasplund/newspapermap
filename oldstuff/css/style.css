@@ -1,0 +1,4 @@
+table th{text-align:left;}
+.header-logo{clear:both;text-align:center;background-image: -moz-linear-gradient(top, #333333, #222222); background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #333333),color-stop(1, #222222));   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#333333', EndColorStr='#222222')";}
+.ui-icon-facebook{background:url(../app_images/facebook.png) no-repeat center center;}
+.ui-icon-twitter{background:url(../app_images/twitter.png) no-repeat center center;}

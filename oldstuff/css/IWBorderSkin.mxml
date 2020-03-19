@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<degrafa:GraphicBorderSkin 
+    xmlns:mx="http://www.adobe.com/2006/mxml" 
+    xmlns:degrafa="http://www.degrafa.com/2008"
+    xmlns:flash.filters='flash.filters.*'
+    >
+    <mx:Script>
+        <![CDATA[
+            
+            [Bindable] private var awidth:Number = 0;
+            [Bindable] private var aheight:Number = 0;
+            
+            override protected function updateDisplayList(unscaledWidth:Number, unscaledHeight:Number):void{
+                super.updateDisplayList(unscaledWidth, unscaledHeight);
+                awidth = unscaledWidth;
+                aheight = unscaledHeight;
+            }
+            
+        ]]>
+    </mx:Script>
+    <degrafa:geometry>
+        <degrafa:RoundedRectangleComplex width="{awidth}" height="{aheight}"
+            topLeftRadius="10" topRightRadius="5"
+            bottomLeftRadius="0" bottomRightRadius="10"
+            >
+            <degrafa:stroke>
+                <degrafa:SolidStroke color="#62ABCD" id="theStroke" />
+            </degrafa:stroke>
+            <degrafa:fill>
+                <degrafa:LinearGradientFill id="MainFill" angle="90" >
+                    <degrafa:GradientStop ratio="0" alpha="1" color="#336699"/>
+                    <degrafa:GradientStop ratio="1" alpha="1" color="#62ABCD"/>
+                </degrafa:LinearGradientFill>
+            </degrafa:fill>  
+        </degrafa:RoundedRectangleComplex> 
+    </degrafa:geometry>
+    <degrafa:filters>
+        <flash.filters:DropShadowFilter alpha=".3" color="#000000" distance="6" blurX="6" blurY="6" angle="45"/>
+    </degrafa:filters>                 
+</degrafa:GraphicBorderSkin>

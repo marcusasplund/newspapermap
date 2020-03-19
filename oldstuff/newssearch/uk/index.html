@@ -1,0 +1,99 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en" id="newssearch-newspapermap-com/uk">
+<!--<![endif]-->
+ <head>
+  <meta charset="utf-8">
+   <title>news search UK</title>
+   <meta name="author" content="greatname.se">
+    <meta name="description" content="news search UK - find news from all British newspapers">
+     <meta name="keywords" content="news search,find news from all British newspapers,newspapermap, ipad, jQuerymobile, webapp, android, symbian, blackberry">
+      <meta name="apple-mobile-web-app-capable" content="yes">
+       <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+        <meta name="author" content="greatname.se">
+         <meta name="robots" content="all">
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+           <link rel="icon" href="favicon.ico">
+            <link rel="apple-touch-icon" href="n57.png">
+             <link rel="apple-touch-icon" sizes="72x72" href="n72.png"/>
+             <link rel="apple-touch-icon" sizes="114x114" href="n114.png"/>
+             <meta property="og:image" content="http://newssearch.newspapermap.com/uk/n114.png"/>
+             <link rel="image_src" href="http://newssearch.newspapermap.com/uk/n114.png"/>
+             <meta itemprop="name" content="news search">
+              <meta itemprop="description" content="news search UK - find news from all British newspapers">
+               <meta itemprop="image" content="http://newssearch.newspapermap.com/uk/n114.png">
+                <script type="text/javascript">
+                 var myScreen = screen.width;
+                 if (myScreen < 699) if (confirm('It looks like You came here with a mobile device. Click OK for a mobile version.')) {
+                  window.location.href = 'http://artikelsok.se/enmobil.html';
+                 }
+                </script>
+                <link rel="stylesheet" href="css/style2.css">
+                 <script src="js/libs/modernizr-2.0.min.js"></script>
+                 <script src="js/libs/respond.min.js"></script>
+                 <script src="https://www.google.com/jsapi?" type="text/javascript"></script>
+                 <script type="text/javascript">
+                  google.load('search', '1', {language : 'en', style : google.loader.themes.SHINY});
+                  function getQuery() {
+                   var url = '' + window.location;
+                   var queryStart = url.indexOf('?') + 1;
+                   if (queryStart > 0) {
+                    var parts = url.substr(queryStart).split('&');
+                    for (var i = 0; i < parts.length; i++) {
+                     if (parts[i].length > 2 && parts[i].substr(0, 2) == 'q=') {
+                      return decodeURIComponent(
+                      parts[i].split('=')[1].replace(/\+/g, ' '));
+                     }
+                    }
+                   }
+                   return '';
+                  }
+                  function onLoad() {
+                       var customSearchOptions = {};
+  
+    var imageSearchOptions = {};
+    imageSearchOptions['layout'] = google.search.ImageSearch.LAYOUT_POPUP;
+    customSearchOptions['enableImageSearch'] = true;
+    customSearchOptions['imageSearchOptions'] = imageSearchOptions;
+  
+    var customSearchControl = new google.search.CustomSearchControl(
+      '001282870027659013129:ea_pn2bfazu', customSearchOptions);
+
+    customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+    var options = new google.search.DrawOptions();
+    options.setAutoComplete(true);
+    customSearchControl.draw('cse', options);
+                   customSearchControl.execute(getQuery());
+                  }
+                  google.setOnLoadCallback(onLoad);
+                 </script>
+                </head>
+                <body>
+                <div id="cse">Loading...</div>
+                 <div id="header-container">
+                  <header class="wrapper">
+                   <h1 id="title"><a href="http://newssearch.newspapermap.com/uk/" title="find news from all british newspapers">news search UK</a></h1>
+                   <nav>
+                    <a class="twitter" title="post to twitter" href="https://twitter.com/intent/tweet?&amp;text=news%20search&amp;url=http%3A%2F%2Fnewssearch.newspapermap.com/uk?q=news">twitter</a>
+                    <a class="fb" title="share on facebook" href="http://www.facebook.com/sharer.php?u=http://newssearch.newspapermap.com/uk">facebook</a>
+                    <a class="orange" title="share with addthis" href="http://www.addthis.com/bookmark.php?url=http://newssearch.newspapermap.com/uk&amp;title=news%20search%20|%20find%20news%20from%20all%20British%20newspapers">addthis</a>
+                    <a class="green" title="newspapermap | find and translate all newspapers in the world" href="http://newspapermap.com">newspaper map</a>
+                    <a class="red" title="about us" href="http://greatname.se">© 2011 Great Name</a>
+                    <strong>beta&nbsp;</strong>
+                   </nav>
+                  </header>
+                  </div>
+                 <div id="add">
+                  <g:plusone></g:plusone>
+                 </div>
+                </div>
+                 <script>
+window.___gcfg={lang:"sv"};(function(){var a=document.createElement("script");a.type="text/javascript";a.async=true;a.src="https://apis.google.com/js/plusone.js";var b=document.getElementsByTagName("script")[0];b.parentNode.insertBefore(a,b)})();var _gaq=[["_setAccount","UA-19887300-4"],["_trackPageview"],["_setDomainName","none"],["_setAllowLinker",true],["_trackPageLoadTime"]];
+(function(a,b){var c=a.createElement(b),d=a.getElementsByTagName(b)[0];c.async=1;c.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";d.parentNode.insertBefore(c,d)})(document,"script");
+                 </script>
+<!--[if lt IE 7 ]> <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script> <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script> <![endif]-->
+               </body>
+              </html>

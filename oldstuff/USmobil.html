@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en-US" ID="newspapermap-com/USmobil">
+ <head>
+  <meta charset="utf-8">
+   <title>Newspaper Map</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+      <meta name="author" content="greatname.se">
+       <meta name="description" content="Newspapermap - Biggest newspaper site in the world - find and translate all newspapers in the world">
+        <meta name="keywords" content="newspaper app, iPhone, Android, blackberry, jQuerymobile, kindle, pressdisplay, ipad, newspaper map, newspaper, newspapers, Google, maps, world, news, translate">
+         <meta name="robots" content="all">
+          <link rel="icon" href="N57.png">
+           <link rel="apple-touch-icon" href="N57.png">
+            <link rel="apple-touch-icon" sizes="72x72" href="N72.png"/>
+            <link rel="apple-touch-icon" sizes="114x114" href="N114.png"/>
+            <base target="main">       
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />
+            <link rel="stylesheet" href="css/mobilmapRC2.css"/>  
+			<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+			<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>  
+           </head>
+           <body onLoad="initialize()">
+            <div data-role="page" id="map" data-theme="a">
+             <div data-role="header" style="padding-top:10px;padding-bottom:10px;">
+              <input type="search" data-theme="c" onKeyDown="if (event.keyCode==13) changeData(this.value);" name="paper" placeholder="Search, pick and click" id="paper" autocomplete="off">
+             </div>
+             <div data-role="content" id="map_content">
+              <div id="map_canvas"></div>
+             </div>
+             <div data-role="footer" data-position="fixed">
+              <div data-role="navbar">
+               <ul>
+                <li><a href="#page1" data-icon="info">about</a></li>
+                <li><a onClick="changeMap6();" data-icon="plus">all</a></li>
+                <li><a onClick="changeMap7();" data-icon="minus">major</a></li>
+                <li><a href="http://www.addthis.com/bookmark.php?url=newspapermap.com&amp;title=Find,%20read%20and%20translate%2010%20000%20newspapers%20in%20the%20world%20at%20Newspaper%20Map" target="_blank" data-icon="star">share</a></li>
+               </ul>
+              </div>
+             </div>
+            </div>
+            <div data-role="page" id="page1">
+             <div data-role="header" data-theme="a"><h1>newspapermap</h1></div>
+             <div data-role="content" data-inset="true">
+              <div>
+               Newspaper Map is developed by Great Name, Gothenburg, Sweden.</div>
+              <ul data-role="listview" data-dividertheme="a" data-inset="true">
+               <li><a href="http://greatname.se/wordpress/?page_id=208" target="_blank">help</a></li>
+               <li><a href="https://spreadsheets.google.com/viewform?formkey=dFUtZzJtbGFDMmVVckRiVTFfcGJLdGc6MQ" target="_blank">add/correct a paper</a></li>
+               <li><a href="http://greatname.se/wordpress/?page_id=211" target="_blank">privacy policy</a></li>
+               <li data-role="list-divider">contact/follow us</li>
+               <li><a href="http://greatname.se/wordpress/">blog</a></li>
+               <li><a href="http://m.facebook.com/newspapermap" target="_blank">facebook</a></li>
+               <li><a href="mailto:newspapermap@gmail.com" target="_blank">e-mail</a></li>
+               <li><a href="https://twitter.com/intent/user?original_referer=http%3A%2F%2Fnewspapermap.com%2F&amp;region=screen_name&amp;screen_name=newspapermap&amp;source=followbutton&amp;variant=1.0">twitter</a></li>
+               <li><a href="http://greatname.se" target="_blank">2010 Great name</a></li>
+              </ul>
+             </div>
+            </div>
+    <script src="https://www.google.com/jsapi?"></script>
+<script>
+ google.load('maps', '3.9', {
+  other_params: 'sensor=false'
+ });
+ google.load('visualization', '1.1', {});
+</script>
+<script>
+ var roadAtlasStyles = [{
+   featureType: 'all',
+   elementType: 'all',
+   stylers: [{
+    saturation: -90
+   },
+   {
+    lightness: -40
+   },
+   {
+    gamma: 0.6
+   }]
+  },
+  {
+   featureType: "water",
+   elementType: "all",
+   stylers: [{
+    saturation: 0
+   },
+   {
+    lightness: 70
+   }]
+  }];
+ var map;
+ var layer;
+ var tableid = 3667561;
+ var zoom = 4;
+ var latlng = new google.maps.LatLng(38.89, -99.58);
+ function initialize() {
+  map = new google.maps.Map(document.getElementById('map_canvas'), {
+   center: latlng,
+   zoom: zoom,
+   streetViewControl: false,
+   mapTypeControl: false,
+   mapTypeControlOptions: {
+    style: google.maps.MapTypeControlStyle.DEFAULT,
+    mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'usroadatlas'],
+    position: google.maps.ControlPosition.TOP_RIGHT
+   },
+   scrollwheel: true,
+   navigationControl: true,
+   navigationControlOptions: {
+    style: google.maps.NavigationControlStyle.SMALL,
+    position: google.maps.ControlPosition.TOP_LEFT
+   }
+  });
+  var styledMapOptions = {
+    name: "Newspaper Map"
+   };
+  var usRoadMapType = new google.maps.StyledMapType(
+   roadAtlasStyles, styledMapOptions);
+  map.mapTypes.set('usroadatlas', usRoadMapType);
+  map.setMapTypeId('usroadatlas')
+  layer = new google.maps.FusionTablesLayer(tableid, {
+   query: "SELECT lat_long FROM " + tableid + ""
+  });
+  layer.setMap(map);
+ }
+ function changeData(fname) {
+  var queryText = encodeURIComponent("SELECT Name, Lat, Long FROM " + tableid + " WHERE Name CONTAINS IGNORING CASE '" + fname + "'");
+  var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
+  query.send(getData);
+ }
+ function getData(response) {
+  fname = response.getDataTable().getValue(0, 0);
+  lat = response.getDataTable().getValue(0, 1);
+  lon = response.getDataTable().getValue(0, 2);
+  map.setZoom(9);
+  map.setCenter(new google.maps.LatLng(lat, lon));
+  layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE Name = '" + fname + "'");
+ }
+ function changeMap6() {
+  layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+ }
+ function changeMap7() {
+  layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE large = 'large'");
+ }
+</script>
+<script src='js/jquery.autocompleteMOD.js'></script>
+<script>
+ $(function () {
+  $("#paper").autocomplete("searchUS.php", {
+   selectFirst: false
+  });
+ });
+</script>
+<script>
+	var _gaq=[['_setAccount','UA-19887300-3'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body> 
+</html> 

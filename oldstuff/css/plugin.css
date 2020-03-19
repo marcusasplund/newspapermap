@@ -1,0 +1,60 @@
+figcaption, .lightbox .caption {
+	font-family: "Reenie Beanie", cursive;
+	text-align: center;
+	line-height: 1.1em;
+	display: block;
+	margin-top: 5px;
+	width: 200px;
+}
+.inline figcaption, .lightbox.inline .caption, .gallery figcaption, .lightbox.gallery .caption {
+	width: 100px;
+}
+.lightbox {
+	position: relative;
+	border: 10px solid white;
+	background: white;
+	line-height: 25px;
+	display: inline-block;
+	-webkit-box-shadow: 0 3px 10px #ccc; -moz-box-shadow: 0 3px 10px #ccc;
+	-webkit-transform: rotate(5deg); -moz-transform: rotate(5deg);
+	-webkit-transition: all 0.7s ease; -moz-transition: all 1s ease;
+}
+.lightbox.gallery {
+	list-style: none;
+	float: left;
+	margin: 20px;
+}
+.lightbox.inline {
+	float: right;
+}
+.lightbox:nth-child(even) {
+	-webkit-transform: rotate(-5deg); -moz-transform: rotate(-5deg);
+}
+.lightbox.inline:nth-child(even) {
+	float: left;
+}
+.lightbox:nth-child(even):hover {
+	-webkit-transform: rotate(1deg); -moz-transform: rotate(1deg);
+}
+.lightbox:nth-child(even):focus {
+	-webkit-transform: rotate(3deg) scale(2.5); -moz-transform: rotate(3deg) scale(2.5);
+	
+}
+.lightbox:hover {
+	-webkit-transform: rotate(-1deg); -moz-transform: rotate(1deg);
+	-webkit-box-shadow: 0 3px 10px #666; -moz-box-shadow: 0 3px 10px #666;
+}
+.lightbox:focus {
+	outline: none;
+	-webkit-transform: rotate(-3deg) scale(2.5); -moz-transform: rotate(-3deg) scale(2.5);
+	-webkit-box-shadow: 0 3px 10px #666; -moz-box-shadow: 0 3px 10px #666;
+	z-index: 9999;
+}
+.lightbox img {
+	width: 200px;
+	display: block;
+}
+.lightbox.inline img, .lightbox.gallery img {
+	width: 100px;
+	display: block;
+}

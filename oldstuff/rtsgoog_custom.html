@@ -1,0 +1,48 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+<title>Untitled Document</title> 
+
+<SCRIPT LANGUAGE="JavaScript"> 
+var NS = (navigator.appName == "Netscape") ? 1 : 0;
+if (NS) document.captureEvents(Event.DBLCLICK);
+document.ondblclick = dict;
+ 
+var newwin;
+function dict() {
+if (NS) {
+t = document.getSelection();
+opennewwin(t);
+}
+else {
+t = document.selection.createRange();
+if(document.selection.type == 'Text' && t.text != '') {
+document.selection.empty();
+opennewwin(t.text);
+      }
+   }
+}
+function opennewwin(text) {
+if (text > '') {
+newwin = window.open('http://www.google.se/search?&q='+text, 'dictionary', 'width=800, height=600, resizable=yes, menubar=yes, toolbar=yes, scrollbars=yes');
+setTimeout('newwin.focus()', 100);
+   }
+}
+</script> 
+</head>
+<body> 
+<p><center> 
+<font face="arial, helvetica" size="3">The government said the new rise in radioactivity could have been caused by the installation on Friday of steel panels intended to contain radioactive materials. The construction may have temporarily stirred up stagnant waste in the area, Hidehiko Nishiyama, the deputy director general of Japan’s nuclear regulator, the Nuclear and Industrial Safety Agency, told reporters. However, the increase in iodine 131, which has an eight-day half life, could signal the possibility of a new leak, he said.
+ 
+“We want to determine the origin and contain the leak, but I must admit that tracking it down is difficult,” he said.
+ 
+The authorities have insisted that the radioactivity will dissipate and poses no immediate threat to fish outside the waters nearest to the plant or to the people who might eat them. The government has banned fishing close to the shore there.
+ 
+Both cesium and iodine can increase the long-term risk of cancer with exposures to high levels.
+ 
+Regardless, plant workers on Saturday began dumping sandbags filled with zeolite, a mineral that absorbs radioactive cesium, into the sea.</font> 
+</center><p> 
+</body> 
+</html> 

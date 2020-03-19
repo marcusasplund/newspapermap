@@ -1,0 +1,268 @@
+html {
+height : 100%;
+}
+body {
+padding:50px 80px;
+font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+height : 100%;
+width : 100%;
+margin : 0;
+padding : 0;
+border : 0;
+background-image : url(http://newspapermap.com/pics/bgpink.png);
+background-repeat : repeat-x;
+font-size : 90%;
+overflow : visible;
+}
+body, td, th {
+font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+color : #fff;
+font-weight : 500;
+background-color:#222;
+}
+a:link {
+color : #fff;
+text-decoration : underline;
+}
+a:visited {
+text-decoration : underline;
+color : #fff;
+}
+a:hover {
+text-decoration : underline;
+color : #0f0;
+}
+a:active {
+text-decoration : none;
+color : #fff;
+}
+#header ul {
+clear : left;
+float : left;
+width : 100%;
+list-style : none;
+margin : 10px 0 0 0;
+}
+#header ul li {
+display : inline;
+list-style : none;
+margin : 0;
+padding : 0;
+}
+#header ul li a {
+display : inline;
+float : left;
+margin : 0 0 0 1px;
+padding : 3px 10px;
+text-align : center;
+color : #fff;
+text-decoration : underline;
+position : relative;
+left : 15px;
+line-height : 1.3em;
+overflow : visible;
+}
+#layoutdims {
+clear : both;
+background-image: url(http://newspapermap.com/pics/bgpink.png);
+background-repeat: repeat-x;
+border-top : 4px solid #000;
+margin : 0;
+padding : 6px 15px !important ;
+text-align : right;
+overflow : visible;
+}
+#logo {
+border : 0 solid #333;
+margin : 7px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+#logo:hover {
+border-color : #333;
+	-moz-box-shadow: 0px 0px 0px #FFF;
+	-webkit-box-shadow: 0px 0px 0px #FFF;
+}
+#flag {
+border : 1px solid #006;
+margin-left : 7px;
+	-moz-border-radius: 0px;
+	-webkit-border-radius: 0px;
+}
+#flag:hover {
+border-color : #0f0;
+	-moz-box-shadow: 0px 0px 0px #FFF;
+	-webkit-box-shadow: 0px 0px 0px #FFF;
+}
+#container {
+display : inline;
+float : left;
+margin : 0 auto;
+background : #222;
+margin-left : 0;
+margin-top : 10px;
+width : 100%;
+height : 100%;
+border : 0 solid #333;
+font-family:"Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+text-align : left;
+position : relative;
+}
+		div.wp1 {
+			float: left;
+			width: 260px;
+			height: 260px;
+			margin: 20px;
+			background-color: #222;
+			font-family: "Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+			font-size: 13px;
+			text-align: left;
+			border: 0px solid #FFF;
+			
+		}
+		div.wp {
+			float: left;
+			width: 130px;
+			height: 130px;
+			margin: 10px;
+			background-color: #222;
+			font-family: "Lucida Grande","bitstream vera sans","trebuchet ms",sans-serif,verdana;
+			font-size: 12px;
+			text-align: center;
+			border: 0px solid #FFF;
+			
+		}
+		div.wp img {
+			border:10px solid #222;
+			margin: 3px auto;
+			border: 0px;
+			
+
+		}
+
+
+div.wp img:hover{
+	border-color:#222;
+	-moz-box-shadow: 0px 0px 15px #FFF;
+	-webkit-box-shadow: 0px 0px 15px #FFF;
+}
+div.wp a:link {
+color : #fff;
+text-decoration : none;
+}
+div.wp a:visited {
+text-decoration : none;
+color : #fff;
+}
+div.wp a:hover {
+text-decoration : none;
+color : #0f0;
+}
+div.wp a:active {
+text-decoration : none;
+color : #fff;
+}
+
+#footer {
+clear : both;
+background: #222;
+background-color:#222;
+float : left;
+width : 100%;
+border-top : 0 solid #000;
+overflow : visible;
+}
+#footer p {
+padding : 10px;
+margin : 0;
+}
+
+
+
+/* get rid of those system borders being generated for A tags */
+a:active {
+  outline:none;
+}
+
+:focus {
+  -moz-outline-style:none;
+}
+/* root element for scrollable */
+.vertical {  
+	
+	/* required settings */
+	position:relative;
+	overflow:hidden;	
+
+	/* vertical scrollers have typically larger height than width */	
+	height: 665px;	 
+	width: 700px;
+	border-top:1px solid #ddd;	
+}
+
+/* root element for scrollable items */
+.items {	
+	position:absolute;
+	
+	/* this time we have very large space for height */	
+	height:20000em;	
+	margin: 0px;
+}
+
+/* single scrollable item */
+.item {
+	border-bottom:0px solid #ddd;
+	margin:10px 0;
+	padding:15px;
+	font-size:12px;
+	height:100px;
+}
+
+/* elements inside single item */
+.item img {
+	float:left;
+	margin-right:20px;
+	height:90px;
+	width:120px;
+	border:3px solid #222;
+
+}
+.item img:hover{
+	border-color:#222;
+	-moz-box-shadow: 0px 0px 10px #FFF;
+	-webkit-box-shadow: 0px 0px 10px #FFF;
+}
+
+.item h3 {
+	margin:0 0 5px 0;
+	font-size:16px;
+	color:#FFF;
+	font-weight:normal;
+}
+
+/* the action buttons above the scrollable */
+#actions {
+	width:700px;
+	margin:30px 0 10px 0;	
+}
+
+#actions a {
+	font-size:12px;		
+	cursor:pointer;
+	color:#FFF;
+	margin-left:20px;
+}
+
+#actions a:hover {
+	text-decoration:underline;
+	color:#0f0;
+}
+
+.disabled {
+	visibility:hidden;		
+}
+
+.next {
+	float:right;
+}	
+

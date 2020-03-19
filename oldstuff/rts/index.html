@@ -1,0 +1,224 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<meta name="viewport" content="initial-scale=1.0, user-scalable=yes" /> 
+<title>Real Time Twitter Search</title> 
+<meta name="description" content="Search Tweets in continous realtime"/> 
+<meta name="keywords" content="twitter,search,realtime, real time search"/> 
+<meta name="apple-mobile-web-app-capable" content="yes"> 
+<meta name="robots" content="all"> 
+<link rel="icon" href="G50.png"> 
+<link rel="apple-touch-icon" href="G114.png"> 
+</head> 
+<style type="text/css">
+body {
+  margin: 0;
+  padding: 0;
+  font: 9pt Helvetica, Arial, Sans-serif;
+ }
+
+#search {
+  background:#000000 url(ui-bg_inset-soft_70_000000_1x100.png) 50% 50% repeat-x;
+  padding: 7px;
+}
+h3,p{
+margin-left:10px;
+}
+#textfield {
+  background: #fff;
+  margin: 0;
+  padding: 6px;
+  border: 1px solid #eee;
+  outline-width: 0;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+}
+
+a {text-decoration:none}
+#button{color:#FFF; font-weight:bold;margin-left:15px;background:#000000 url(ui-bg_inset-soft_70_000000_1x100.png) 50% 50% repeat-x;height:30px;width:100px;border:#666 1px solid;text-shadow:1px 1px 2px #666;box-shadow:2px 2px 5px #000;-moz-box-shadow:2px 2px 5px #000;-webkit-box-shadow:2px 2px 5px #000;padding:0;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px}
+#button:hover{background:#000000 url(ui-bg_highlight-soft_70_000000_1x100.png) 50% 50% repeat-x;border:#999 1px solid}
+
+#search label {
+  color: #fff;
+  padding: 8px 10px;
+  font-size: 14px;
+}
+#map-wrapper, #results-wrapper {
+	height:100%;
+	
+}
+
+.has-cols #map-wrapper{
+	width:60%;
+
+}
+.has-cols #results-wrapper {
+width:40%;
+
+
+}
+
+.has-cols #map-wrapper {
+  float: right;
+}
+
+.has-cols #results-wrapper {
+  float: left;
+
+}
+
+#results-wrapper {
+ display: none;
+}
+
+#map {
+  height: 100%;
+}
+
+#results {
+  margin-left:10px;
+  padding: 2px;
+  overflow: auto;
+}
+
+.tweet {
+  padding: 4px 0;
+  clear: both;
+  }
+
+.thumb {
+  float: left;
+  width: 50px;
+}
+
+.thumb img {
+	padding: 2px;
+	border: 1px solid #222;
+  height: 48px;
+  width: 48px;
+}
+
+.body {
+  margin-left: 55px;
+}
+
+.location {
+  color: #999;
+}
+
+#close {
+  float: right;
+  margin: -1.5% 1.5% 0 0;
+  font-weight: bold;
+  font-size: 150%;
+  text-decoration: none;
+  color: #222;
+}
+#share{position:absolute;left:10px;bottom:10px;overflow:visible;width:330px;height:28px;;padding:6px}
+</style>  
+</head>
+<body>
+<div id="search"> 
+<form id="form1" name="form1" method="get" action=""> 
+<input type="search" id="textfield" autofocus="autofocus" name="search" />  <input type="button" name="button" id="button" value="search" /></input> 
+<label>real time twitter search
+</label> 
+</form> 
+</div>
+<div id="share"> 
+<div class="addthis_toolbox addthis_default_style"> 
+<a class="addthis_counter addthis_pill_style"></a> 
+<a class="addthis_button_tweet"></a> 
+<a class="addthis_button_facebook_like"></a>  
+</div></div> 
+<div class="twtr-widget" id="twtr-widget-1" align="center"></div>
+<script language="javascript" type="text/javascript" src="http://www.rootfood.se/tagcloud/get.js"> </script>
+<script language="javascript" type="text/javascript">
+var textfield = decodeURIComponent(gup('search'));
+var iterval = 2000;
+var w;
+window.onload = function(){
+document.getElementById('textfield').value = textfield;
+document.form1.button.onclick = function(){
+textfield = document.form1.textfield.value;
+w.destroy().setSearch(textfield).setCaption('' + textfield).render().start();
+}
+}
+function refreshInterval(value){
+if (value != 0) {
+w.destroy().setTweetInterval(value).render().start();
+iterval = value;
+}
+}
+function start_(){
+w = new TWTR.Widget({
+version: 2,
+type: 'search',
+search: textfield, 
+interval: iterval, 
+title: '',
+subject: '' + textfield, 
+width: 600,
+height: 400,
+theme: {
+shell: {
+background: '#fffff',
+color: '#000'
+},
+tweets: {
+background: '#ffffff',
+color: '#00000',
+links: '#d21c00'
+}
+},
+features: {
+scrollbar: false,
+loop: true,
+live: true,
+hashtags: true,
+timestamp: true,
+avatars: true,
+behavior: 'default'
+}
+}).render().start();
+}
+start_();
+function gup(name, url) { 
+if (!url) url = window.location.href;								
+name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");			
+var results = new RegExp("[\\?&]"+name+"=([^&#]*)").exec(url);
+if( results == null ) return "";								
+else 
+return decodeURIComponent(results[1].replace(/\+/g," ")); 
+}
+</script><div class="twtr-doc" style="width: 270px;"></div><div class="twtr-bd" ></div>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script type="text/javascript"> 
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-19887300-2']);
+    _gaq.push(['_trackPageview']);
+ 
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagname('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+ 
+    </script> 
+<script type='text/javascript'>var addthis_config = {
+'data_track_clickback':false
+};</script> 
+<script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#username=newspapermap"></script>
+</body>
+</html>                            
+
+ 
+
+
+
+
+

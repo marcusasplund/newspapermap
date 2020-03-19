@@ -1,0 +1,140 @@
+@charset "utf-8";
+/************************************************************************ General */
+html {
+	font-size: 100%;
+	background-color: #fff;
+} 
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 62.5%;
+	line-height: 100%;
+	color: #444;
+  background-color: #fff;
+}
+
+.acs, .hidden-on-load {
+	position: absolute;
+	left: -9999px;
+	width: 990px;
+}
+
+a {
+	color: #00f;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #00c;
+}
+
+/************************************************************************ Header */
+#header {
+	padding: 6px 0 0 10px;
+}
+
+#header h1 {
+	float: left;
+	font-family: 'Tangerine', arial, serif;
+	font-size: 4.0em;
+	line-height: 140%;
+	font-weight: normal;
+}
+
+#header h1 span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 0.25em;
+	color: #CCC;
+}
+
+#searchBox {
+}
+
+#searchBox input {
+	float: left;
+	font-size: 2.0em;
+	width: 250px;
+	padding: 0 5px;
+	border: 1px solid #aaa;
+	line-height: 150%;
+	margin: 6px 0 0 50px;
+}
+
+#suggested-keyword {
+	float: left;
+	font-family: 'Reenie Beanie', arial, serif;
+	font-size: 2.0em;
+	line-height: 200%;
+	margin-left: 10px;
+	color: #aaa;
+}
+
+/************************************************************************ Middle */
+#middle {
+	height: 400px;
+	overflow: auto;
+}
+
+.results {
+	width: 23%;
+	padding: 1%;
+	float: left;
+	overflow: hidden;
+}
+
+.results .logo {
+	margin-bottom: 10px;
+}
+
+.results li, .profile-result {
+	padding: 10px 0;
+	border-top: 1px solid #CCC;
+}
+
+.results h1 {
+	font-size: 1.3em;
+	line-height: 150%;
+}
+
+.results p {
+	font-size: 1.1em;
+	line-height: 140%;
+}
+
+.profile-result-img {
+	float: left;
+	width: 50px;
+	height: 50px;
+	margin-right: 10px;
+}
+
+.profile-result-text-block {
+	margin-left: 60px;
+}
+
+#resultsLinkedin .profile-result-text-block {
+	margin-left: 0px;
+}
+
+/************************************************************************ Footer */
+#footer {
+	padding: 10px 0 20px 1%;
+	font-size: 1.2em;
+}
+
+/******************************* Hacks */
+.cf:after {
+    content: "."; 
+    display: block; 
+    height: 0; 
+    clear: both; 
+    visibility: hidden;
+}
+
+.cf {display: inline-block;}
+
+/* Hides from IE-mac \*/
+* html .cf {height: 1%;}
+.cf {display: block;}
+/* End hide from IE-mac */
+
