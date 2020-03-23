@@ -1,3 +1,4 @@
+@import "input";
 
 html,
 body {
@@ -9,12 +10,11 @@ body {
 
 #map {
   min-height: 300px;
-  height: 100vh;
-  grid-area: map;
+  height: calc(100vh - 64px);
 }
 @media (min-width: 40rem) {
   #map{
-    min-height: 100vh;
+    min-height: calc(100vh - 64px);
   }
 }
 .wrapper {
@@ -22,13 +22,40 @@ body {
   grid-template-columns: auto auto;
   grid-column-gap: 20px;
 }
+.leaflet-popup-content-wrapper {
+  padding: 1px;
+  text-align: left;
+  border-radius: 3px;
+  min-width: 250px;
+}
+.ap-dropdown-menu.ap-with-places {
+  position: relative !important;
+  overflow-y: -webkit-paged-y;
+}
+
+.mdc-list {
+  overflow-y: -webkit-paged-y;
+}
+
+.mdc-drawer {
+  height: auto;
+}
+.mdc-drawer__content {
+  margin-top: -64px;
+}
+.list-item {
+  padding: 1rem;
+}
+#search, .ap-name {
+  font-size: small;
+}
 .map-icon {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
   border-radius: 50% 50% 50% 0;
   border-style: solid;
   border-color: rgba(0, 0, 0, 0.4);
-  border-width: 3px;
+  border-width: 1px;
   background: rgba(255, 0, 255, 0.9);
   position: absolute;
   transform: rotate(-45deg);
@@ -36,15 +63,8 @@ body {
   -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
   -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
 }
-.map-icon::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-  margin: 4px 0 0 4px;
-  background: rgba(255, 255, 255, 1.0);
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+a {
+  text-decoration: none;
 }
 
 .leaflet-cluster-anim .leaflet-marker-icon, .leaflet-cluster-anim .leaflet-marker-shadow {
