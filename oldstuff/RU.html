@@ -1,0 +1,415 @@
+<!doctype html>
+<!--[if lt IE 9]> <html class="ie" lang="ru"> <![endif]-->
+<!--[if gt IE 8]><!--> <html itemscope itemtype="http://schema.org/" class=no-js lang=ru id=newspapermap-com/RU> <!--<![endif]-->
+<head>
+<meta charset=utf-8>
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge;chrome=1"><![endif]-->
+    <title>newspaper map | RU</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+     <meta name="apple-mobile-web-app-capable" content="yes">
+      <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+       <meta name="author" content="greatname.se">
+        <meta name="description" content="newspaper map | Газета карта | 10000 + интернет газет в мире, переведен в один клик">
+         <meta name="keywords" content="Крупнейшие газеты сайтом в мире - интернет-газеты, переведенные газет, исторические газеты, газеты, газеты карте, newspapermap, разжигать, PressDisplay, IPAD, газеты, Google, карты, мир, новости, переводить">
+          <meta name="robots" content="all">
+           <link rel="icon" href="favicon.ico">
+            <link rel="apple-touch-icon" href="N57.png">
+             <link rel="apple-touch-icon" sizes="72x72" href="N72.png"/>
+             <link rel="apple-touch-icon" sizes="114x114" href="N114.png"/>
+             <meta property="og:image" content="http://newspapermap.com/N114.png"/>
+             <link rel="image_src" href="http://newspapermap.com/N114.png"/>
+             <meta itemprop="name" content="newspaper map | RU">
+              <meta itemprop="description" content="newspaper map | Газета карта | 10000 + интернет газет в мире, переведен в один клик">
+               <meta itemprop="image" content="http://newspapermap.com/N114.png">
+                <base target="main">
+                 <link rel="stylesheet" href="css/comp4.css">
+                  <script src="js/modernizr-2.0.min.js"></script>
+                 </head>
+                 <body ONLOAD="initialize()">
+                  <div id="fb-root"></div>
+                  <script>
+                   (function (d, s, id) {
+                    var js,
+                     fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                     return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.async = true;
+                    js.src = "//connect.facebook.net/ru_RU/all.js#xfbml=1&appId=136294166472604";
+                    fjs.parentNode.insertBefore(js, fjs);
+                   }(document, 'script', 'facebook-jssdk'));
+                  </script>
+                  <div id="map_canvas"></div>
+                  <div id="main">
+                   <h1><a href="http://newspapermap.com/RU.html" target="_top" title="газета карте">newspaper map | RU</a></h1>
+                   <p>найти и перевести более 10000 газет</p>
+                   <div class="map_form">
+                    <input type="search" name="paper" title="Поиск конкретных газету, выбираем ваш выбор и нажмите ввод или кнопку" value="поиск газету, выбираем и нажмите" onClick="if (this.value=='поиск газету, выбираем и нажмите') {this.value='';}" id="paper" class="search" onKeyDown="if (event.keyCode==13) changeData(this.value);" autocomplete="off">
+                     <button class="primary button" title="Нажмите, чтобы представить поиск" onClick="changeData(document.getElementById('paper').value);">ПОИСК</button>
+                    </div>
+                    <div class="map_form block">
+                     <input class="search" type="search" title="Мгновенный поиск места или адреса" value="пойти в место или адрес" onFocus="if (this.value=='пойти в место или адрес') {this.value='';}" maxlength="2048" tabindex="1" autocomplete="off" id="search"></div>
+                     <span id="suggestion"></span>
+                     <br>
+                      <div class="block">
+                       <form>
+                        <select id="lang" onChange="changeMap0();" title="Выберите, чтобы показать только газет в выбранном языке, нажмите кнопку +, чтобы посмотреть в газетах на всех языках">
+                         <option value="">Фильтр по языку</option>
+                         <option value="Albanian">Албанский</option>
+                         <option value="English">Английский</option>
+                         <option value="Arabic">Арабский</option>
+                         <option value="Assamese">Ассамский</option>
+                         <option value="Afrikaans">Африкаанс</option>
+                         <option value="Bengali">Бенгальский</option>
+                         <option value="Bulgarian">Болгарский</option>
+                         <option value="Hungarian">Венгерский</option>
+                         <option value="Vietnamese">Вьетнамский</option>
+                         <option value="Galician">Галицко</option>
+                         <option value="Dutch">Голландский</option>
+                         <option value="Greek">Греческий</option>
+                         <option value="Guarani">Гуарани</option>
+                         <option value="Gujarati">Гуджарати</option>
+                         <option value="Danish">Датский</option>
+                         <option value="Hebrew">Иврит</option>
+                         <option value="Yiddish">Идиш</option>
+                         <option value="Hindi">Индийский</option>
+                         <option value="Indonesian">Индонезийский</option>
+                         <option value="Icelandic">Исландский</option>
+                         <option value="Spanish">Испанский</option>
+                         <option value="Italian">Итальянский</option>
+                         <option value="Kannada">Каннада</option>
+                         <option value="Catalan">Каталонский</option>
+                         <option value="Chinese">Китайский</option>
+                         <option value="Korean">Корейский</option>
+                         <option value="Kurdish">Курдский</option>
+                         <option value="Khmer">Кхмерском</option>
+                         <option value="Latvian">Латвия</option>
+                         <option value="Lithuanian">Литовский</option>
+                         <option value="Macedonian">Македонский</option>
+                         <option value="Malay">Малайский</option>
+                         <option value="Malayalam">Малаялам</option>
+                         <option value="Manx">Manx</option>
+                         <option value="Maltese">Мальтийский</option>
+                         <option value="Marathi">Маратхи</option>
+                         <option value="German">Немецкий</option>
+                         <option value="Nepali">Непальский</option>
+                         <option value="Norwegian">Норвежский</option>
+                         <option value="Oriya">Ория</option>
+                         <option value="Punjabi">Панджаби</option>
+                         <option value="Papiamento">Папиаменту</option>
+                         <option value="Persian">Персидский</option>
+                         <option value="Polish">Польский</option>
+                         <option value="Portuguese">Португальский</option>
+                         <option value="Romanian">Румыния</option>
+                         <option value="Russian">Русский</option>
+                         <option value="Serbian">Сербский</option>
+                         <option value="Sinhala">Сингальский</option>
+                         <option value="Slovak">Словацкий</option>
+                         <option value="Slovenian">Словенский</option>
+                         <option value="Somali">Сомалийский</option>
+                         <option value="Swahili">Суахили</option>
+                         <option value="Thai">Тайский</option>
+                         <option value="Tamil">Тамильский</option>
+                         <option value="Telugu">Телугу</option>
+                         <option value="Tibetan">Тибетский</option>
+                         <option value="Turkish">Турецкий</option>
+                         <option value="Ukrainian">Украинский</option>
+                         <option value="Finnish">Финский</option>
+                         <option value="French">Французский</option>
+                         <option value="Croatian">Хорватский</option>
+                         <option value="Czech">Чешский</option>
+                         <option value="Swedish">Шведский</option>
+                         <option value="Shona">Шона</option>
+                         <option value="Estonian">Эстонский</option>
+                         <option value="Urdu">Язык Урду</option>
+                         <option value="Japanese">Японский</option>
+                        </select>
+                       </form>
+                      </div>
+                      <div class="block">
+                       <b>&nbsp;</b>
+                       <div id="buttonset">
+                        <button name="scale" style="width:3em" class="left button" title="Нажмите, чтобы посмотреть все газеты" onClick="changeMap6();">все</button>
+                        <button name="scale" style="width:5em" class="middle button" title="Нажмите, чтобы посмотреть только крупные газеты" onClick="changeMap7();">большой</button>
+                        <button name="scale" style="width:8em" class="middle button" onClick="changeMap8();" title="Journaux historiques BETA">исторический</button>
+                        <button name="scale" style="width:6em" class="middle button" onClick="window.location.href='http://newspapermap.com/add'" title="Благодарю вас за сохранение газета карту свободных и объявлении свободной">жертвовать</button>
+                        <button name="scale" style="width:6em" class="right button" onClick="window.location.href='http://newspapermap.com/add'" title="Добавить или исправить данные,Ajouter ou corriger un journal, Add or correct a newspaper,Añadir o corregir un periódico,Adicionar ou corrigir um jornal,Aggiungere o correggere un giornale,Dodaj lub korygowania gazety,إضافة أو تصحيح صحيفة,补充或更正报纸,Eklemek veya gazete doğru,追加や新聞を修正">добавлять</button>
+                       </div>
+                      </div>
+                      <h4><a href="http://facebook.com/newspapermap" title="Следуйте за нами на facebook">facebook</a>
+                       |
+                       <a href="https://plus.google.com/100127923130643146741/" title="Следуйте за нами на G+">google+</a>
+                       |
+                       <a href="https://twitter.com/intent/user?original_referer=http%3A%2F%2Fnewspapermap.com%2FRU.html%2F&amp;region=screen_name&amp;screen_name=newspapermap&amp;source=followbutton&amp;variant=1.0" title="Следуйте за нами на twitter">twitter</a>
+                       |
+                       <a href="http://www.addthis.com/bookmark.php?url=http://newspapermap.com/&amp;title=10000%20+%20интернет%20газет%20в%20мире,%20переведен%20в%20один%20клик" title="Отправить эту">addThis</a></h4>
+                      <div class="fb-like" data-href="http://newspapermap.com/" data-send="false" data-layout="button_count" data-width="50" data-show-faces="false"></div>
+                      <div class="gplus">
+                       <g:plusone></g:plusone>
+                      </div>
+                      <div class="twitter">
+                       <a href="https://twitter.com/share?url=http%3A%2F%2Fnewspapermap.com" data-lang="ru" class="twitter-share-button" data-count="horizontal" data-text="(http://newspapermap.com/RU.html русская версия)" data-via="newspapermap">Tweet</a>
+                       <script src="http://platform.twitter.com/widgets.js"></script>
+                      </div>
+                     </div>
+                     <script src="https://www.google.com/jsapi?"></script>
+                     <script>
+                      google.load('maps', '3.7', {
+                       other_params: 'sensor=false&language=ru'
+                      });
+                      google.load('jquery', '1.7.1');
+                      google.load('visualization', '1.1', {});
+                     </script>
+                     <script>
+                      var roadAtlasStyles = [{
+                        featureType: 'all',
+                        elementType: 'all',
+                        stylers: [{
+                         saturation: -80
+                        },
+                        {
+                         lightness: -40
+                        },
+                        {
+                         gamma: 0.6
+                        }]
+                       },
+                       {
+                        featureType: "water",
+                        elementType: "all",
+                        stylers: [{
+                         saturation: 0
+                        },
+                        {
+                         lightness: 70
+                        }]
+                       }];
+                      var layer;
+                      var tableid = 552892;
+                      var tableid2 = 874780;
+                      var zoom = 3;
+                      var latlng = new google.maps.LatLng(37.0, -5.6);
+                      var suggestion;
+                      var ne;
+                      var sw;
+                      var tabkey;
+                      var regex1;
+                      var query = "";
+                      $('#search').live('keydown', function (e) {
+                       var keyCode = e.keyCode || e.which;
+                       if (keyCode == 9) {
+                        e.preventDefault();
+                        if (suggestion) {
+                         regex1 = new RegExp("^" + $('#search').val() + "(.*?)( |$)", "ig");
+                         tabkey = suggestion.match(regex1);
+                         $("#search").val(tabkey);
+                        }
+                       }
+                      });
+                      function initialize() {
+                       getParams();
+                       map = new google.maps.Map(document.getElementById('map_canvas'), {
+                        center: latlng,
+                        zoom: zoom,
+                        minZoom: 2,
+                        mapTypeControl: true,
+                        mapTypeControlOptions: {
+                         style: google.maps.MapTypeControlStyle.DEFAULT,
+                         mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'usroadatlas'],
+                         position: google.maps.ControlPosition.TOP_RIGHT
+                        },
+                        scrollwheel: true,
+                        navigationControl: true,
+                        navigationControlOptions: {
+                         style: google.maps.NavigationControlStyle.SMALL,
+                         position: google.maps.ControlPosition.TOP_RIGHT
+                        }
+                       });
+                       var styledMapOptions = {
+                         name: "Newspaper Map"
+                        };
+                       var usRoadMapType = new google.maps.StyledMapType(
+                        roadAtlasStyles, styledMapOptions);
+                       map.mapTypes.set('usroadatlas', usRoadMapType);
+                       map.setMapTypeId('usroadatlas'),
+                       google.maps.event.addListener(map, 'center_changed', function () {
+                        updateHash();
+                       });
+                       google.maps.event.addListener(map, 'zoom_changed', function () {
+                        updateHash();
+                       });
+                       geocoder = new google.maps.Geocoder();
+                       layer = new google.maps.FusionTablesLayer(tableid);
+                       if (query) {
+                        layer.setQuery(query);
+                       }
+                       layer.setMap(map);
+                       $('#search').keyup(primaryFunction);
+                       $('#search').submit(primaryFunction);
+                       var legendDiv = document.createElement('DIV');
+                       var legend = new Legend(legendDiv, map);
+                       legendDiv.index = 1;
+                       map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(legendDiv);
+                      }
+                      function Legend(controlDiv, map) {
+                       controlDiv.style.padding = '7px';
+                       var controlUI = document.createElement('DIV');
+                       controlUI.style.background = 'rgba(0,0,0,0.8) url("bg.png") 0 0 no-repeat';
+                       controlUI.style.borderRadius = '3px';
+                       controlUI.title = 'newspaper map dans dautres langues';
+                       controlDiv.appendChild(controlUI);
+                       var controlText = document.createElement('DIV');
+                       controlText.style.fontFamily = 'Arial,sans-serif';
+                       controlText.style.color = '#fff';
+                       controlText.style.fontSize = '10px';
+                       controlText.style.paddingLeft = '20px';
+                       controlText.style.paddingRight = '3px';
+                       controlText.style.paddingTop = '10px';
+                       controlText.innerHTML = '<a title="newspapermap.com" href="http://newspapermap.com"> Aнглийский | English</a><br/>' + '<a title="newsapp.es" href="http://newspapermap.com/ES.html"> Испанский | Español</a><br/>' + '<a title="plan de journaux" href="http://newspapermap.com/FR.html"> Французский | Française<br/>' + '<a title="mapa do jornais" href="http://newspapermap.com/PT.html"> Portuguese | Português</a><br/>' + '<a title="zeitungskarte.de" href="http://zeitungskarte.de"> Немецкий | Deutsch</a><br/>' + 'Pусский</a><br/>' + ' <a  title="newsapp.jp" href="http://newspapermap.com/JA.html"> Японский | 日本</a><br/>' + '<a  title="صحيفة الخريطة" href="http://newspapermap.com/AR.html"> Арабский | العربية</a><br/>' + '<a  title="신문지도" href="http://newspapermap.com/KO.html"> Kорейский | 한국의</a><br/>' + ' Другой | Other<br/>';
+                       controlUI.appendChild(controlText);
+                      }
+                      function changeData(fname) {
+                       var queryText = encodeURIComponent("SELECT Name, Lat, Long FROM " + tableid + " WHERE Name CONTAINS IGNORING CASE '" + fname + "'");
+                       var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
+                       query.send(getData);
+                      }
+                      function getData(response) {
+                       fname = response.getDataTable().getValue(0, 0);
+                       lat = response.getDataTable().getValue(0, 1);
+                       lon = response.getDataTable().getValue(0, 2);
+                       map.setZoom(19);
+                       map.setCenter(new google.maps.LatLng(lat, lon));
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE Name CONTAINS '" + fname + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap0() {
+                       lang = document.getElementById("lang").value;
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE language CONTAINS '" + lang + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap10() {
+                       filter = document.getElementById("filter").value;
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE '" + filter + "' = '" + filter + "'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap6() {
+                       layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap7() {
+                       layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE large = 'large'");
+                       layer.setMap(map);
+                       layer2.setMap(null);
+                      }
+                      function changeMap8() {
+                       layer.setMap(null);
+                       layer2 = new google.maps.FusionTablesLayer(tableid2);
+                       layer2.setMap(map);
+                      }
+                      function primaryFunction() {
+                       var searchtext = $('#search').val();
+                       $.ajax({
+                        type: "GET",
+                        url: "http://maps-api-ssl.google.com/maps/suggest?hl=ru&gl=ru&v=3.7&json=b&auth=ABQIAAAAALakLdjjlTHt7ZswQah3VRQhzk0B9PQtvkZRIRmh2TMWxDe2yRSKq5BP3oJYSnI5FTbfuS_Rdg8dEQ&src=1,2&num=5&numps=5&callback=handleResponse&q=" + $('#search').val() + "&cp=" + $('#search').val().length,
+                        dataType: "script",
+                        queue: "SUG1",
+                        cancelExisting: true
+                       });
+                      }
+                      handleResponse = {};
+                      handleResponse = function (sugdat) {
+                       DIR1b4 = suggestion;
+                       suggestion = parse(sugdat);
+                       DIR1now = suggestion;
+                       if (DIR1b4 != DIR1now) {
+                        updateHTML('suggestion', suggestion);
+                        codeAddress(suggestion);
+                       }
+                      };
+                      function updateHTML(elmId, value) {
+                       document.getElementById(elmId).innerHTML = value;
+                      }
+                      function parse(_sugdat) {
+                       if (_sugdat["suggestion"][0]["query"]) {
+                        return _sugdat["suggestion"][0]["query"];
+                       } else {
+                        return null;
+                       }
+                      }
+                      function codeAddress(_sug) {
+                       var address = _sug;
+                       geocoder.geocode({
+                        'address': address
+                       }, function (results, status) {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                         var ne = results[0].geometry.viewport.getNorthEast();
+                         var sw = results[0].geometry.viewport.getSouthWest();
+                         map.fitBounds(results[0].geometry.viewport);
+                         layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+                         layer.setMap(map);
+                         layer2.setMap(null);
+                         var boundingBoxPoints = [
+                          ne, new google.maps.LatLng(ne.lat(), sw.lng()), sw, new google.maps.LatLng(sw.lat(), ne.lng()), ne];
+                        }
+                       });
+                      }
+                      function updateHash() {
+                       var slat = map.getCenter().lat();
+                       var slong = map.getCenter().lng();
+                       var mapzoom = map.getZoom();
+                       window.location.hash = "slat=" + slat + "&slong=" + slong + "&zoom=" + mapzoom;
+                      }
+                      function getParams() {
+                       var url = window.location.hash;
+                       if (url != "") {
+                        params = url.split("&");
+                        slat = params[0].split("=")[1];
+
+                        slong = params[1].split("=")[1];
+                        latlng = new google.maps.LatLng(slat, slong);
+                        zoom = parseInt(params[2].split("=")[1]);
+                       }
+                      }
+                     </script>
+                     <script src="js/jquery.autocompleteMOD.js"></script>
+                     <script>
+                      $().ready(function () {
+                       $("#paper").autocomplete("searchUS.php", {
+                        selectFirst: false
+                       });
+                      });
+                      window.___gcfg = {
+                       lang: 'ru'
+                      };
+                      (function () {
+                       var po = document.createElement('script');
+                       po.type = 'text/javascript';
+                       po.async = true;
+                       po.src = 'https://apis.google.com/js/plusone.js';
+                       var s = document.getElementsByTagName('script')[0];
+                       s.parentNode.insertBefore(po, s);
+                      })();
+                      var _gaq = [
+                        ['_setAccount', 'UA-19887300-3'],
+                        ['_trackPageview'],
+                        ['_setDomainName', 'none'],
+                        ['_setAllowLinker', true],
+                        ['_trackPageLoadTime']
+                       ];
+                      (function (d, t) {
+                       var g = d.createElement(t),
+                        s = d.getElementsByTagName(t)[0];
+                       g.async = 1;
+                       g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+                       s.parentNode.insertBefore(g, s)
+                      }(document, 'script'));
+                     </script>
+                     <!--[if lt IE 7 ]> <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.2/CFInstall.min.js"></script> <script>window.attachEvent("onload",function(){CFInstall.check({mode:"overlay"})})</script> <![endif]-->
+                    </body>
+                   </html>

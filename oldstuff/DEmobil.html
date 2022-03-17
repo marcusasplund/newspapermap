@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="de" ID="zeitungskarte-de/mobil">
+ <head>
+  <meta charset="utf-8">
+   <title>Zeitungskarte</title>
+   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+     <meta name="apple-mobile-web-app-status-bar-style" content="translucent black">
+      <meta name="author" content="greatname.se">
+       <meta name="description" content="zeitungskarte.de - Größte Zeitung Website in Deutschland - zu finden und übersetzen alle Zeitungen der Welt">
+        <meta name="keywords" content="onlinenewspapers, übersetzt Zeitungen, Zeitschriften, Zeitungen Karte newspapermap, kindle, pressdisplay, ipad, newspapers, Google, maps, world, news, translate">
+         <meta name="robots" content="all">
+          <link rel="icon" href="N57.png">
+           <link rel="apple-touch-icon" href="N57.png">
+            <link rel="apple-touch-icon" sizes="72x72" href="N72.png"/>
+            <link rel="apple-touch-icon" sizes="114x114" href="N114.png"/>
+            <base target="main">
+			<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.css" />
+             <link rel="stylesheet" href="css/mobilmapRC2.css"/>          
+			<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+			<script src="http://code.jquery.com/mobile/1.1.0/jquery.mobile-1.1.0.min.js"></script>
+            </head>
+            <body ONLOAD="initialize()">
+             <div data-role="page" id="map" data-theme="a">
+              <div data-role="header" style="padding-top:10px;padding-bottom:10px;">
+               <input type="search" data-theme="c" onKeyDown="if (event.keyCode==13) changeData(this.value);" name="paper" value="Suchen Sie Ihre Zeitung" id="paper" class="search" onClick="if (this.value=='Suchen Sie Ihre Zeitung') {this.value='';}" autocomplete="off"></input>
+              </div>
+              <div data-role="content" id="map_content">
+               <div id="map_canvas"></div>
+              </div>
+              <div data-role="footer" data-position="fixed">
+               <div data-role="navbar">
+                <ul>
+                 <li><a href="#page1" data-icon="info">Info</a></li>
+                 <li><a onClick="changeMap6();" data-icon="plus">Alle</a></li>
+                 <li><a onClick="changeMap7();" data-icon="minus">Große</a></li>
+                 <li><a href="http://www.addthis.com/bookmark.php?url=zeitungskarte.de&title=Finden,%20lesen%20und%20übersetzen%20alle%20Zeitungen%20der%20Welt%20in%20Zeitungskarte" target="_blank" data-icon="star">teilen</a>
+                 </li>
+                </ul>
+               </div>
+              </div>
+             </div>
+             <div data-role="page" id="page1" data-theme="a">
+              <div data-role="header" data-theme="a"><h1>Info</h1></div>
+              <div data-role="content" data-inset="true">
+               <div data-role="content">
+                Zeitungskarte ist von, Göteborg entwickelten.</div>
+               <ul data-role="listview" data-theme="a" data-dividertheme="a" data-inset="true">
+                <li><a href="http://greatname.se/wordpress/?page_id=208" target="_blank">Hilfe</a></li>
+                <li><a href="https://spreadsheets.google.com/viewform?formkey=dFUtZzJtbGFDMmVVckRiVTFfcGJLdGc6MQ" target="_blank">addieren/Korrektur Informationen</a></li>
+                <li><a href="http://greatname.se/wordpress/?page_id=211" target="_blank">Datenschutzbestimmung</a></li>
+                <li data-role="list-divider">Kontakt / folgen Sie uns</li>
+                <li><a href="http://greatname.se/wordpress/">blog</a></li>
+                <li><a href="http://m.facebook.com/newspapermap" target="_blank">facebook</a></li>
+                <li><a href="mailto:newspapermap@gmail.com" target="_blank">e-mail</a></li>
+                <li><a href="http://m.twitter.com/newspapermap" target="_blank">twitter</a></li>
+                <li><a href="http://greatname.se" target="_blank">2010 Great name</a></li>
+               </ul>
+              </div>
+             </div>
+             <script src="https://www.google.com/jsapi?"></script>
+             <script>
+              google.load('maps', '3.8', {
+               other_params: 'sensor=false&language=de'
+              });
+              google.load('visualization', '1.1', {});
+             </script>
+             <script>
+              var roadAtlasStyles = [{
+                featureType: 'all',
+                elementType: 'all',
+                stylers: [{
+                 saturation: -90
+                },
+                {
+                 lightness: -40
+                },
+                {
+                 gamma: 0.6
+                }]
+               },
+               {
+                featureType: "water",
+                elementType: "all",
+                stylers: [{
+                 saturation: 0
+                },
+                {
+                 lightness: 70
+                }]
+               }];
+              var map;
+              var layer;
+              var tableid = 3667561;
+              var zoom = 7;
+              var latlng = new google.maps.LatLng(50.94, 9.73);
+              function initialize() {
+               map = new google.maps.Map(document.getElementById('map_canvas'), {
+                center: latlng,
+                zoom: zoom,
+                streetViewControl: false,
+                mapTypeControl: false,
+                mapTypeControlOptions: {
+                 style: google.maps.MapTypeControlStyle.DEFAULT,
+                 mapTypeIds: [google.maps.MapTypeId.SATELLITE, 'usroadatlas'],
+                 position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                scrollwheel: true,
+                navigationControl: true,
+                navigationControlOptions: {
+                 style: google.maps.NavigationControlStyle.SMALL,
+                 position: google.maps.ControlPosition.TOP_LEFT
+                }
+               });
+               var styledMapOptions = {
+                 name: "Newspaper Map"
+                };
+               var usRoadMapType = new google.maps.StyledMapType(
+                roadAtlasStyles, styledMapOptions);
+               map.mapTypes.set('usroadatlas', usRoadMapType);
+               map.setMapTypeId('usroadatlas')
+               layer = new google.maps.FusionTablesLayer(tableid, {
+                query: "SELECT lat_long FROM " + tableid + ""
+               });
+               layer.setMap(map);
+              }
+              function changeData(fname) {
+               var queryText = encodeURIComponent("SELECT Name, Lat, Long FROM " + tableid + " WHERE Name CONTAINS IGNORING CASE '" + fname + "'");
+               var query = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq=' + queryText);
+               query.send(getData);
+              }
+              function getData(response) {
+               fname = response.getDataTable().getValue(0, 0);
+               lat = response.getDataTable().getValue(0, 1);
+               lon = response.getDataTable().getValue(0, 2);
+               map.setZoom(9);
+               map.setCenter(new google.maps.LatLng(lat, lon));
+               layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE Name = '" + fname + "'");
+              }
+              function changeMap6() {
+               layer.setQuery("SELECT lat_long FROM  " + tableid + "");
+              }
+              function changeMap7() {
+               layer.setQuery("SELECT lat_long FROM " + tableid + " WHERE large = 'large'");
+              }
+             </script>
+<script src='js/jquery.autocompleteMOD.js'></script>
+<script>
+ $().ready(function () {
+  $("#paper").autocomplete("searchUS.php", {
+   selectFirst: false
+  });
+ });
+</script>
+<script>
+	var _gaq=[['_setAccount','UA-19887300-3'],['_trackPageview']];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+	s.parentNode.insertBefore(g,s)}(document,'script'));
+</script>
+</body> 
+</html> 

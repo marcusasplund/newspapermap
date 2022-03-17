@@ -1,0 +1,5 @@
+
+<Files ~ "\.(php*|s?p?html|cgi|pl)$">
+deny from all
+</Files>
+

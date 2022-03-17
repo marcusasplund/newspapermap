@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="pops-style.css"  media="screen"> 
+	<link rel="stylesheet" type="text/css" href="pops-style-mobile.css" media="handheld"/>
+	
+	<!--[if !IE]>-->
+	<link type="text/css" rel="stylesheet" media="only screen and (max-device-width: 480px)" href="pops-style-mobile.css" />
+	<link type="text/css" rel="stylesheet" media="only screen and (min-device-width: 768px) and (max-device-width: 1024px)" href="pops-style-mobile.css" />
+	<!--<![endif]-->
+	
+	<link rel="stylesheet" href="jquery.alerts.css" type="text/css" media="screen" title="no title" charset="utf-8">	
+	
+	<!-- SCRIPTS -->
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.2&sensor=true"></script>
+	<script type="text/javascript" src="http://www.google.com/jsapi"></script> 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+	<script src="jquery.alerts.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript" src="http://project.wnyc.org/census-maps/js/jquery.url.min.js"></script> 
+	
+<title>Privately Owned Public Spaces</title>
+
+<meta name="viewport" content="width = device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0" />  
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<script type="text/javascript"> 
+
+//Location Variables
+var profile;
+var coordinate;
+var table;
+var datatable;
+var infowindow;
+var infoWindowContent = '';
+var marker;  
+var markerdrawn = false;
+google.load('visualization', '1', {'packages':['table']});
+
+//Global Variables
+var map, layer;
+var tableid = 1876351; 
+var mapdrawn = false;
+var geocoder; 
+var basemap_location = "http://www.thenewyorkworld.com/public/2011/oct/pops/pops-locations.html"
+
+var initialLocation;
+var siberia = new google.maps.LatLng(60, 105);
+var newyork = new google.maps.LatLng(40.69847032728747, -73.9514422416687);
+var browserSupportFlag =  new Boolean();
+
+
+function initialize() {  
+	geocoder = new google.maps.Geocoder();
+    map = new google.maps.Map(document.getElementById('map_canvas'), {
+    center: new google.maps.LatLng(40.75401921961656, -74.00596618652344),
+    zoom: 12,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+	zoomControl: true,
+	panControl: false,
+	streetViewControl: true,
+	zoomControlOptions: {
+		style: google.maps.ZoomControlStyle.LARGE,
+		position: google.maps.ControlPosition.RIGHT_TOP
+		}
+	
+  });
+
+  var style = [
+
+  {
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { gamma: 4.76 },
+      { visibility: "simplified" },
+      { saturation: -99 },
+      { lightness: -20 }
+    ]
+  },{
+    featureType: "poi",
+    elementType: "all",
+    stylers: [
+      { saturation: 0 },
+      { visibility: "off" }
+    ]
+  },{
+	featureType: "poi.park",
+	stylers: [
+	  { visibility: "on" },
+	  { lightness: 8 }
+	]
+  },{
+    featureType: "transit",
+    elementType: "all",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },{
+    featureType: "",
+    elementType: "labels",
+    stylers: [
+			{ saturation: -99 },
+      { hue: "#ffff00" }
+    ]
+  },{
+    featureType: "road.highway",
+    elementType: "labels",
+    stylers: [
+      { visibility: "on" }
+    ]
+  },{
+    featureType: "landscape",
+    elementType: "all",
+    stylers: [
+      { visibility: "off" }
+    ]
+  },	{
+	    featureType: "landscape.man_made",
+	    stylers: [
+	      { visibility: "on" }
+	    ]
+	  },{
+    featureType: "water",
+    elementType: "all",
+    stylers: [
+      { lightness: 20 }
+    ]
+  }
+
+  ]
+
+  var styledMapType = new google.maps.StyledMapType(style, {
+    map: map,
+    name: 'Styled Map'
+  });
+
+  map.mapTypes.set('map-style', styledMapType);
+  map.setMapTypeId('map-style');
+
+  layer = new google.maps.FusionTablesLayer(tableid);
+  layer.setQuery("SELECT 'geometry' FROM " + tableid + " WHERE new york");
+  layer.setMap(map);  
+  mapdrawn = true;
+
+
+	var queryProgress = encodeURIComponent("SELECT count(),Reported FROM "+ tableid +" group by Reported");
+	var queryFull = new google.visualization.Query('http://www.google.com/fusiontables/gvizdata?tq='  + queryProgress);
+	queryFull.send(showProgress);
+	
+	function showProgress(response) {
+		var numberYes = response.getDataTable().getValue(1, 0);
+		var numberNo = response.getDataTable().getValue(0, 0);
+		
+		var responseTotal = numberNo + numberYes;
+		var percentYes = (numberYes/responseTotal)*100;	
+				
+		document.getElementById('progressInner').style.width = percentYes+"%";
+		document.getElementById('sub-key').innerHTML ="-- "+numberYes+" sites visited";
+	}
+		
+
+
+
+} //close initialize function
+
+
+function drawmap(tableid) {
+     layer = new google.maps.FusionTablesLayer(tableid);
+	 layer.setMap(map);  
+}
+
+
+function locategps(){
+		
+// Try HTML5 geolocation
+if(navigator.geolocation) {
+  navigator.geolocation.getCurrentPosition(function(position) {
+	
+	
+    var pos = new google.maps.LatLng(position.coords.latitude,
+                                     position.coords.longitude);
+
+    map.setCenter(pos);
+	map.setZoom(16);
+  	}, function() {
+    	handleNoGeolocation(true);
+  	});
+	} else {
+		
+  // Browser doesn't support Geolocation
+  handleNoGeolocation(false);
+}
+
+}
+
+function handleNoGeolocation(errorFlag) {
+    if (errorFlag) {
+      var content = 'Error: The Geolocation service failed.';
+    } else {
+      var content = 'Error: Your browser doesn\'t support geolocation.';
+    }
+
+    var options = {
+      map: map,
+      position: new google.maps.LatLng(60, 105),
+      content: content
+    };
+
+    var infowindow = new google.maps.InfoWindow(options);
+    map.setCenter(options.position);
+}
+
+function generateInfoWindow(results, status) {
+  if (status == google.maps.GeocoderStatus.OK) {
+  
+    //center and zoom map
+    coordinate = results[0].geometry.location;
+
+	map.setCenter(coordinate);
+		map.setZoom(15);
+    
+    marker = new google.maps.Marker({
+      map: map,
+      layer: layer,
+      animation: google.maps.Animation.DROP,
+      position: coordinate
+    });
+  }
+}
+
+function enterSubmit() {
+  if(event.keyCode==13) {
+    zoomtoaddress();
+  }
+}
+
+//geocode function
+function zoomtoaddress() {
+	//remove any existing markers
+	if (markerdrawn == true){
+	marker.setMap(null)
+	}
+  //geocode the address
+  geocoder.geocode({'address': document.getElementById("address").value }, generateInfoWindow);
+  markerdrawn = true;
+}
+
+//embed options
+
+function currentMapUrl() {
+	var embed_url_response = basemap_location + 
+			"?lat=" + map.getCenter().lat().toFixed(4) + 
+			"&lon=" + map.getCenter().lng().toFixed(4) + 
+			"&zoom=" + map.getZoom();
+	return embed_url_response;
+}
+
+function embedBox() {
+	var embed_url_response = currentMapUrl();
+	jAlert('<strong>The direct link for this map is: <br></strong>http://bit.ly/privatePublic<br><br><strong>To embed this map on a blog or site, copy & paste this:<br></strong>&lt;iframe src=\"'+embed_url_response+'\" height=\"700\" width=\"600\" scrolling=\"no\" frameborder=\"0\"&gt;&lt;/iframe><br>&nbsp;<br>TIP: Adjust the \'width\' value to match the width of your blog or column.', 'Share or Embed');
+	
+}
+
+</script>
+
+<script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+</head>
+<body onload="initialize();">
+
+<div id="map-head">
+	<h2><a href="http://thenewyorkworld.com" target="_blank" alt="The New York World"><img src="nyw-logo.jpg" width="315" alt="The New York World" target="_blank"></a></h2>
+	<div style="float:left;"><h1>How Public are New York City&#39;s <br />Privately Owned Public Spaces?</h1></div>
+	
+</div><!-- end map-head -->	
+
+
+<div id="map_canvas"></div>
+<!-- Begin Drop Down Code -->
+<div id="legend"> 
+	<div id="legend-box">
+	  <h2 style="margin-bottom:10px;" class="hide"><strong>Help us survey New York City&#39;s plazas, atriums and other &#34;public&#34; spaces on private property.</strong></h2>
+  
+
+
+	<div id="keyBox">
+		<img src="imgs/purple.png" alt="Purple" />Not yet visited <img src="imgs/green.png" alt="Green" />Visited
+	</div><!--keyBox-->
+
+
+	<div id="progressBox">
+<h2>Progress </h2>
+	<div id="sub-key">-- 0 sites visited
+	</div>
+	
+	<div id="progressOuter">
+		
+		<div id="progressInner">	
+		</div><!-- progressInner -->
+		
+	</div><!-- progressOuter -->
+	
+	<div class="l-text">0 <span>391 sites</span>
+	</div><!-- l-text -->
+	
+	</div><!--progress box-->
+	
+	<div id="locateBg">
+	
+	<div id="locateMe"> 
+    <input class="button" type="button" id="locateBtn" value="Find my location" onclick="locategps()">
+	<input class="input" id="address" type="textbox" value="Zoom to address" onclick="this.value='';" onkeydown="if (event.keyCode == 13) document.getElementById('addressBtn').click()"/> 
+	 	<input class="button" type="button" id="addressBtn" value="GO" onclick="zoomtoaddress()"> 
+	 </div><!-- close locate-me -->
+	
+	<div id="project" style="text-align:center;"><a href="http://www.thenewyorkworld.com/?p=333" target="_blank" >View full article</a></div>
+	 <div id="embed" style="cursor:pointer;text-align:center;margin-bottom:2px;color:blue;" onmouseover="this.style.textDecoration = 'underline'" onmouseout="this.style.textDecoration = 'none'" onclick="embedBox()">
+					Share or embed this map
+				</div>
+
+	  <!-- End Key -->
+
+	  <!-- Begin credit -->
+	  <div id="credit">
+			<strong>Map:</strong> <a href="mailto:michael.keller@thenewyorkworld.com?subject=PrivatePublic_Map_Feedback">Michael Keller</a>/NY World<br><strong>Source:</strong><a href="http://nycopendata.socrata.com/Property/Privately-Owned-Public-Spaces/fum3-ejky" target="_blank">NYC DataMine</a>
+		</div>
+	  <!-- End Credit  -->
+	
+	</div><!-- locateBG -->
+	
+		
+	
+	</div> <!--legend-box-->
+</div> <!-- legend-->
+<script type="text/javascript">
+var _sf_async_config={uid:25014,domain:"thenewyorkworld.com"};
+(function(){
+  function loadChartbeat() {
+    window._sf_endpt=(new Date()).getTime();
+    var e = document.createElement('script');
+    e.setAttribute('language', 'javascript');
+    e.setAttribute('type', 'text/javascript');
+    e.setAttribute('src',
+       (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") +
+       "js/chartbeat.js");
+    document.body.appendChild(e);
+  }
+  var oldonload = window.onload;
+  window.onload = (typeof window.onload != 'function') ?
+     loadChartbeat : function() { oldonload(); loadChartbeat(); };
+})();
+
+</script>
+</body>
+</html>

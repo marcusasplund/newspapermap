@@ -1,0 +1,37 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"> 
+<html> 
+<head> 
+ 
+<title>jQuery Autocomplete Plugin</title> 
+<script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+<script type='text/javascript' src='jquery.autocomplete.js'></script>
+<script type='text/javascript' src='localdata.js'></script> 
+<link rel="stylesheet" type="text/css" href="jquery.autocomplete.css" /> 
+	
+<script type="text/javascript"> 
+$().ready(function() {
+	$("#paper").autocomplete("search.php", {
+
+		width: 260,
+
+		selectFirst: false
+	});
+});
+</script> 
+	
+</head> 
+ 
+<body>  
+<div id="content"> 
+	
+	<form autocomplete="off"> 
+			<label>Single Bird (remote):</label> 
+			<input type="text" id="paper" /> 
+	</form> 
+ 
+
+ 
+</div> 
+</body> 
+</html> 

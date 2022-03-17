@@ -1,0 +1,134 @@
+html {
+height:100%
+}
+
+body {
+height:100%;
+width:100%;
+border:0;
+font-size:10px;
+overflow:visible;
+margin:0;
+padding:0
+}
+
+body,td,th {
+font-family:Georgia, "Times New Roman", Times, serif;
+color:#666;
+font-weight:500;
+}
+a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+a:hover {
+	text-decoration: underline;
+	color: #00FF00;
+}
+a:active {
+	text-decoration: none;
+	color: #FFFFFF;
+}
+#layoutdims {
+clear:both;
+text-align:right;
+overflow:visible;
+margin:0;
+padding:6px 15px !important
+}
+
+#logo {
+border:0 solid #333;
+padding:20px
+}
+
+#logo:hover {
+border-color:#333
+}
+
+
+
+#paper {
+display:inline;
+float:left;
+position:absolute;
+left:10px;
+top:10px;
+height:650px;
+width:270px;
+background-color:#FFF;
+-moz-box-shadow:3px 3px 5px #000;
+-webkit-box-shadow:3px 3px 5px #000;
+box-shadow:3px 3px 5px #000;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;
+opacity:0.93px;
+filter:alpha(opacity=93)
+}
+
+	dl { width: 120px; }
+	dl,dd { margin: 10px; }
+	dt { background:  #000 url(http://www.newspapermap.com/pics/gradient.png) repeat-x 0 -110px;font-size: 11px; padding: 5px; margin: 2px;
+-moz-border-radius:3px;
+-webkit-border-radius:3px;}
+	dt a:link { text-decoration: none;  color: #FFF;}
+	dt a:visited { text-decoration: none;
+	color: #FFF;}
+	dt a:hover { text-decoration: underline;
+	color: #00FF00;}
+	dt a:active { color: #FFF; text-decoration: none; }
+	dd a:link { font-size: 11px; text-decoration: none;  color: #000;}
+	dd a:visited { font-size: 11px; text-decoration: none;
+	color: #000;}
+	dd a:hover { font-size: 11px; text-decoration: underline;
+	color: #00FF00;}
+	dd a:active { font-size: 11px; color: #993399; text-decoration: none; }
+
+	
+	ul { list-style: none; padding: 5px; }
+#ad{
+display:inline;
+float:left;
+position:absolute;
+background-color:#FFF;
+left:140px;
+top:80px;
+width:120px;
+height:530px;
+overflow:visible;
+text-align:left
+}
+#map_canvas{
+width:100%;
+height:100%;
+overflow:visible;
+text-align:left
+}
+
+img {
+border:0px solid #fff;
+margin:0
+}
+
+img:hover {
+border-color:#0f0
+
+}
+
+
+
+
+#paper input{
+font-size:12px;
+padding:5px
+}
+
+#paper p{
+padding:10px
+}
+
+

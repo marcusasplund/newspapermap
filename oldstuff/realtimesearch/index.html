@@ -1,0 +1,186 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+
+<head> 
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+  <title>Real Time Search .in - search in real time - the latest news first</title> 
+
+<meta name="description" content="Search Tweets, News, Blogs and Pictures in continous realtime - see it when it happens."/> 
+
+		<meta name="keywords" content="twitter,search,realtime, real time search"/> 
+
+<style type="text/css"> 
+
+.style1 {font-family: Arial, Helvetica, sans-serif}
+
+body {
+
+	text-align: center;
+
+	background-image: url();
+
+	background-repeat: no-repeat;
+
+}
+
+</style>  
+
+</head> 
+
+<body> 
+
+<p>&nbsp;</p> 
+
+<form id="form1" name="form1" method="get" action=""> 
+
+  <p>&nbsp;</p> 
+
+<p><img src="realtimesearch in.png" hspace="5" vspace="0" border="0" /> 
+
+  <input name="search" type="text" id="textfield" size="31" maxlength="140"/> 
+
+  <input type="button" name="button" id="button" value="Search" /> 
+
+</p> 
+
+</form> 
+
+<div class="twtr-widget" id="twtr-widget-1" align="center"></div> 
+
+<script language="javascript" type="text/javascript" src="get.js"> </script> 
+
+<script language="javascript" type="text/javascript"> 
+
+var textfield = decodeURIComponent(gup('search'));
+
+var iterval = 2000;
+
+var w;
+
+window.onload = function(){
+
+document.getElementById('textfield').value = textfield;
+
+document.form1.button.onclick = function(){
+
+textfield = document.form1.textfield.value;
+
+w.destroy().setSearch(textfield).setCaption('').render().start();
+
+}
+
+}
+
+function refreshInterval(value){
+
+if (value != 0) {
+
+w.destroy().setTweetInterval(value).render().start();
+
+iterval = value;
+
+}
+
+}
+
+function start_(){
+
+w = new TWTR.Widget({
+
+version: 2,
+
+type: 'search',
+
+search: textfield, 
+
+interval: iterval, 
+
+title: '',
+
+subject: '', 
+
+width: 600,
+
+height: 400,
+
+theme: {
+
+shell: {
+
+background: '#fffff',
+
+color: '#000'
+
+},
+
+tweets: {
+
+background: '#ffffff',
+
+color: '#00000',
+
+links: '#d21c00'
+
+}
+
+},
+
+features: {
+
+scrollbar: false,
+
+loop: true,
+
+live: true,
+
+hashtags: true,
+
+timestamp: true,
+
+avatars: true,
+
+behavior: 'default'
+
+}
+
+}).render().start();
+
+}
+
+start_();
+
+function gup(name, url) { 
+
+if (!url) url = window.location.href;								
+
+name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");			
+
+var results = new RegExp("[\\?&]"+name+"=([^&#]*)").exec(url);
+
+if( results == null ) return "";								
+
+else 
+
+return decodeURIComponent(results[1].replace(/\+/g," ")); 
+
+}
+
+ </script><div class="twtr-doc" style="width: 270px;"></div><div class="twtr-bd" ></div> 
+
+<p> 
+
+
+
+</body> 
+
+</html>                            
+
+ 
+
+ 
+
+ 

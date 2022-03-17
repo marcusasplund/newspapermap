@@ -1,0 +1,328 @@
+@charset "utf-8";
+/* CSS Document */
+html {
+height:100%
+}
+
+body {
+height:100%;
+width:100%;
+border:0;
+font-size:90%;
+overflow:visible;
+margin:0;
+padding:0;
+background-color:#FFF;
+
+}
+h1 						{line-height:0.1; color:#000; padding:0 7px; font-size:3.3em;}
+
+body,td,th, img,a{
+	font-family:"Lucida Sans Unicode","Lucida Grande",Garuda,sans-serif;
+	text-decoration:none;
+	color:#000;
+	border:0;
+	font-size: 90%;
+}
+
+
+
+#headermask {
+float:left;
+position:absolute;
+height:60px;
+width:100%;
+background-color:FFF;
+
+}
+#logo {
+	
+
+}
+
+#logo:hover {
+border-color:#333
+}
+#header {
+display:inline;
+background-color:#FFF;
+float:left;
+position:relative;
+left:10%;
+height:60px;
+width:80%;
+}
+
+#clear{
+	clear:both;
+	background-color:#FFFFFF;
+	}
+
+	.menu_container{
+		background: #FFF url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+		color:#000;
+		border-right:0px solid #888888;
+		border-left:0px solid #888888;
+		height:30px;
+		margin:0px auto;
+		text-align:left;
+		width:60em;
+		}
+
+.menu_bar{
+	}
+.menu_bar ul{
+	background: #FFF url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+		color:#000;
+	height:30px;
+	list-style:none;
+	margin:0;
+	padding:0;
+	}
+	.menu_bar li{
+		background: #FFF url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+		color:#000;
+		float:left;
+		width:7em;
+		}
+	.menu_bar li a{
+		background: #FFF url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+		color:#000;
+		display:block;
+		line-height:20px;
+		font-size:0.9em;
+		text-align:center;
+		text-decoration:none;
+		}
+		.menu_bar li a:hover{
+			background: #000 url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+			color:#0F0;
+			
+			}
+					.menu_bar li :active{
+			background: #000 url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+			color:#0F0;
+			
+			}
+		
+	.menu_bar li ul{
+		background: #FFF; 
+		display:none;
+		height:auto;
+		float:left;
+		list-style:none;
+		filter:alpha(opacity=95);
+		opacity:0.95;
+		position:absolute;
+		width:450px;
+		z-index:2000;
+		border: solid 0px #b4b4b4;
+		-moz-box-shadow:3px 3px 5px #000;
+-webkit-box-shadow:3px 3px 5px #000;
+box-shadow:3px 3px 5px #000;
+			border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+		
+		
+		/*top:1em;
+		/*left:0;*/
+		}
+	.menu_bar li:hover ul{
+		display:block;
+		}
+	.menu_bar li li {
+		display:block;
+		float:left;
+		width:150px;
+		}
+	.menu_bar li ul a{
+		display:block;
+		font-size:0.7em;
+		font-style:normal;
+		height:20px;
+		line-height:20px;
+		padding:5px 10px 5px 15px;
+		text-align:left;
+		}
+		.menu_bar li ul a:hover{
+			background:#000 url(http://newspapermap.com/pics/gradient.png) repeat-x 0 0;
+			color:#0F0;
+			
+
+						border-radius: 0.3em;
+	-webkit-border-radius: 0.3em;
+	-moz-border-radius: 0.3em;
+
+			}
+			
+	.menu_bar p{
+		clear:left;
+		}
+	.menu_bar #menutitle a{
+		background:#000;
+		font-weight:bold;
+		color:#FFF;
+		height:20px;
+		line-height:20px;
+		}
+	.menu_bar #menutitle a:hover{
+		background:#000;
+		font-weight:bold;
+		color:#FFF;
+	}
+	
+			
+#papermask {
+display:inline;
+background-color:#FFF;
+float:left;
+position:absolute;
+top:100px;
+left:10%;
+height:80%;
+width:80%;
+}
+
+#map_canvas {
+display:inline;
+background-color:#FFF;
+float:left;
+position:relative;
+top:0px;
+left:0px;
+height:50%;
+width:45%;
+}
+	#map_canvas  a{
+		
+		color:#FFF;
+		height:20px;
+		line-height:20px;
+		}
+	 #map_canvas  a:hover{
+		
+		color:#0F0;
+		text-decoration:underline;
+	}
+
+#paperleft {
+display:inline;
+background-color:#FFF;
+float:left;
+position:relative;
+top:0px;
+right:0px;
+height:50%;
+width:35%;
+}
+#wrapper 			{
+	position:absolute;
+	left:75%;
+	top:100px;
+	width:200px;
+	margin:0 auto;
+	font-family:"Helvetica Neue", Helvetica, Arial, Verdana;
+	}
+p							{padding:0 7px; font-size:12px;}
+a							{color:#251d17; font-size:12px;}
+a:hover				{}
+form 					{margin:0; padding:5px 7px; background:#0F0;}
+form label		{font-size:small;}
+form input		{padding:2px; font-size:15px; width:97%;}
+
+ul#posts			{list-style:none; margin:20px 0; padding:0;}
+ul#posts li		{font-size:small; border-bottom:0px solid #D7D6D5; margin:0; padding:5px 7px; line-height:1.5;}
+ul#posts li	a:hover{
+		
+		color:#0F0;
+		text-decoration:underline;
+}
+
+#paperdown {
+display:inline;
+background-color:#000;
+float:left;
+position:relative;
+top:0px;
+left:0px;
+height:600px;
+width:80%;
+}
+div.layer0 {
+  width: 170px;
+  height: 290px;
+  	float: left;
+margin:10px;
+margin-top:20px;
+margin-left:20px;
+}
+					div.layer0 img {
+			border: 0px solid #D1D1D1;
+			margin: 3px auto;
+			  opacity:0.96;
+  filter:alpha(opacity=96);
+		
+			}
+			div.layer0 img:hover{
+	border-color:#0f0;
+				  opacity:1.0;
+  filter:alpha(opacity=100);
+
+}
+
+div.Layer2 {
+	position:absolute;
+  top:280px;
+  width:160px;
+  height:70px;
+  background-color: #000;
+  text-align:left;
+  color : #FFF;
+  font-size:12px;
+  font-weight : 500;
+  padding: 10px;
+  z-index:1;
+  opacity:0.93;
+  filter:alpha(opacity=93);
+}
+					div.Layer2 img {
+			border: 0px solid #D1D1D1;
+			margin: 3px auto;
+			  opacity:0.93;
+  filter:alpha(opacity=93);
+		
+			}
+			div.Layer2 img:hover{
+	border-color:#0f0;
+				  opacity:1.0;
+  filter:alpha(opacity=100);
+
+}
+div.Layer2  a:link {
+color : #FFF;
+text-decoration : none;
+}
+div.Layer2  a:visited {
+text-decoration : none;
+color : #FFF;
+}
+div.Layer2  a:hover {
+text-decoration : underline;
+color : #0f0;
+}
+div.Layer2  a:active {
+text-decoration : none;
+color : #FFF;
+}
+
+#footer {
+display:inline;
+background-color:#000;
+float:left;
+position:relative;
+top:0px;
+left:0px;
+height:50px;
+width:80%;
+}
