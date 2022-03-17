@@ -1,6 +1,5 @@
 /* global requestAnimationFrame */
-/** @jsx h */
-import { h, app } from 'hyperapp'
+import { h, app, text } from 'hyperapp'
 import { Http } from 'hyperapp-fx'
 import L from 'leaflet'
 import {
@@ -164,7 +163,7 @@ const initialState = getStateFromStorage() || {
 }
 
 const initSearch = () => {
-  places.default({
+  places({
     appId: 'plJK3ZF3CP3E',
     apiKey: '564b7e9c5e43f60bd01c42949b1f7913',
     container: document.querySelector('#search')
@@ -230,83 +229,99 @@ const getRecords = state =>
     ? addRecords
     : fetchNewRecords
 
-// <select
-// onChange={ChangeLanguage}
-// >
-// <option value='en'>English</option>
-// <option value='fr'>French</option>
-// </select>
-// <div class='list-item'>
-//   <label>Newspaper</label>
-//   <input
-//     disabled
-//     type='text'
-//     placeholder='Search newspaper'
-//   />
-// </div>
-// <div class='list-item'>
-//   <label>Place</label>
-//   <input
-//     disabled
-//     type='text'
-//     placeholder='Search place'
-//   />
-// </div>
-// view
 const View = state => (
-  <div>
-    <header class='mdc-top-app-bar'>
-      <div class='mdc-top-app-bar__row'>
-        <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-start'>
-          <button
-            class='material-icons mdc-top-app-bar__navigation-icon mdc-icon-button'
-          >
-            menu
-          </button>
-          <span class='mdc-top-app-bar__title'>Newspaper Map</span>
-        </section>
-        <section class='mdc-top-app-bar__section mdc-top-app-bar__section--align-end'>
-          <button
-            class='material-icons mdc-top-app-bar__navigation-icon mdc-icon-button'
-            onClick={fetchNewRecords}
-          >
-            refresh
-          </button>
-        </section>
-      </div>
-    </header>
-    <div class='app-drawer-layout mdc-top-app-bar--fixed-adjust'>
-      <aside class='mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust'>
-        <div class='mdc-drawer__content'>
-          <nav class='mdc-list'>
-            <div class='list-item'>
-              <label for='language-list'>Translation setting</label>
-              <select
-                onChange={changeLanguage}
-                placeholder='Your language'
-              >
-                {
-                  Object.keys(dict)
-                    .map(key => <option key={key} value={key}>{dict[key]}</option>)
-                }
-              </select>
-            </div>
-            <div class='list-item'>
-              <label for='language-list'>Search place</label>
-              <input
-                id='search'
-                type='text'
-                placeholder='Find a place'
-              />
-            </div>
-          </nav>
-        </div>
-      </aside>
-      <main class='mdc-drawer-app-content main-content'>
-        <div id='map' />
-      </main>
-    </div>
-  </div>
+  h('div', {}, [
+    h('header', {
+      class: 'mdc-top-app-bar'
+    }, [
+      h('div', {
+        class: 'mdc-top-app-bar__row'
+      }, [
+        h('section', {
+          class: 'mdc-top-app-bar__section mdc-top-app-bar__section--align-start'
+        }, [
+          h('button', {
+            class: 'material-icons mdc-top-app-bar__navigation-icon mdc-icon-button'
+          },
+          text('menu')
+          ),
+          h('span', {
+            class: 'mdc-top-app-bar__title'
+          },
+          text('Newspaper Map')
+          )
+        ]),
+        h('section', {
+          class: 'mdc-top-app-bar__section mdc-top-app-bar__section--align-end'
+        }, [
+          h('button', {
+            class: 'material-icons mdc-top-app-bar__navigation-icon mdc-icon-button',
+            title: 'Refresh markers',
+            onclick: fetchNewRecords
+          },
+          text('refresh')
+          )
+        ])
+      ])
+    ]),
+    h('div', {
+      class: 'app-drawer-layout mdc-top-app-bar--fixed-adjust'
+    }, [
+      h('aside', {
+        style: { zIndex: 99999 },
+        class: 'mdc-drawer mdc-drawer--dismissible mdc-top-app-bar--fixed-adjust'
+      }, [
+        h('div', {
+          class: 'mdc-drawer__content'
+        }, [
+          h('nav', {
+            class: 'mdc-list'
+          }, [
+            h('div', {
+              class: 'list-item'
+            }, [
+              h('label', {
+                for: 'language-list'
+              },
+              text('Translation setting')
+              ),
+              h('select', {
+                onchange: changeLanguage,
+                placeholder: 'Your language'
+              },
+              Object.keys(dict)
+                .map(key => h('option', {
+                  key: key,
+                  value: key
+                }, text(dict[key])))
+              )
+            ]),
+            h('div', {
+              class: 'list-item'
+            }, [
+              h('label', {
+                for: 'language-list'
+              },
+              text('Search place')
+              ),
+              h('input', {
+                id: 'search',
+                type: 'text',
+                placeholder: 'Find a place'
+              })
+            ])
+          ])
+        ])
+      ]),
+      h('main', {
+        class: 'mdc-drawer-app-content main-content'
+      }, [
+        h('div', {
+          id: 'map'
+        })
+      ])
+    ])
+  ])
 )
 
 const initMap = state => [
