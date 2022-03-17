@@ -42,8 +42,8 @@ A: -Probably. Email details to newspapermap@gmail.com and we will get back to yo
 - [ ] server side RSSParser
 - [ ] dynamic ui translation
 - [ ] link for updating data
-- [ ] spiderfying close icons
-- [ ] nicer icons
+- [x] spiderfying close icons
+- [x] nicer icons
 
 ## installation
 
