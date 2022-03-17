@@ -39,7 +39,6 @@ A: -Probably. Email details to newspapermap@gmail.com and we will get back to yo
 
 ## todo
 
-- [ ] server side RSSParser
 - [ ] dynamic ui translation
 - [ ] link for updating data
 - [x] spiderfying close icons
