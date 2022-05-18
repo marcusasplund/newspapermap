@@ -39,7 +39,7 @@
     "@material/select": "^13.0.0",
     "@material/top-app-bar": "^13.0.0",
     "@material/typography": "^13.0.0",
-    "hyperapp": "^2.0.21",
+    "hyperapp": "^2.0.22",
     "hyperapp-fx": "^2.0.0-beta.2",
     "leaflet": "^1.7.1",
     "leaflet.markercluster": "^1.5.3",
