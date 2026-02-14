@@ -21,9 +21,9 @@ import RefreshIcon from '@suid/icons-material/Refresh'
 import './styles/app.css'
 
 export default function App () {
-const stored = getStateFromStorage() || {}
+  const stored = getStateFromStorage() || {}
 
-const initialLanguage =
+  const initialLanguage =
   stored.language ??
   detectBrowserLanguage(languages)
 

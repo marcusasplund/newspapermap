@@ -20,5 +20,5 @@ export const languages = [
   { code: 'cs', label: 'Čeština', flag: '🇨🇿' },
   { code: 'da', label: 'Dansk', flag: '🇩🇰' },
   { code: 'fi', label: 'Suomi', flag: '🇫🇮' },
-  { code: 'no', label: 'Norsk', flag: '🇳🇴' },
+  { code: 'no', label: 'Norsk', flag: '🇳🇴' }
 ]
