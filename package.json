@@ -1,28 +1,20 @@
 {
-  "homepage": "https://github.com/marcusasplund/newspapermap#readme",
+  "name": "newspapermap",
+  "version": "0.0.1",
   "license": "MIT",
-  "source": "src/index.html",
-  "name": "analytics",
+  "author": "Marcus Asplund <rootfood@gmail.com> (@marcusasplund)",
+  "homepage": "https://github.com/marcusasplund/newspapermap#readme",
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/marcusasplund/newspapermap.git"
   },
-  "scripts": {
-    "start": "standard && parcel",
-    "build": "rm -rf release && standard && parcel build"
-  },
-  "version": "0.0.1",
-  "author": "Marcus Asplund <rootfood@gmail.com> (@marcusasplund)",
   "bugs": {
     "url": "https://github.com/marcusasplund/newspapermap/issues"
   },
-  "devDependencies": {
-    "@parcel/packager-raw-url": "2.3.2",
-    "@parcel/transformer-sass": "2.3.2",
-    "@parcel/transformer-webmanifest": "2.3.2",
-    "eslint": "^8.11.0",
-    "parcel": "^2.3.2",
-    "standard": "*"
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "standard": {
     "ignore": [
@@ -32,17 +24,22 @@
     ]
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "@suid/vite-plugin": "^0.4.1",
+    "eslint": "^8.11.0",
+    "standard": "*",
+    "typescript": "^5.9.3",
+    "vite": "^6.3.5",
+    "vite-plugin-solid": "^2.11.10"
+  },
   "dependencies": {
-    "@material/drawer": "^13.0.0",
-    "@material/icon-button": "^13.0.0",
-    "@material/list": "^13.0.0",
-    "@material/select": "^13.0.0",
-    "@material/top-app-bar": "^13.0.0",
-    "@material/typography": "^13.0.0",
-    "hyperapp": "^2.0.22",
-    "hyperapp-fx": "^2.0.0-beta.2",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@suid/icons-material": "^0.9.0",
+    "@suid/material": "^0.19.0",
     "leaflet": "^1.9.4",
     "leaflet.markercluster": "^1.5.3",
-    "places.js": "^1.19.0"
+    "places.js": "^1.19.0",
+    "solid-js": "^1.9.11"
   }
 }

@@ -3,8 +3,8 @@ const getMapLocation = (zoom, center) => {
   center = (center) || [63, 17]
 
   if (window.location.hash !== '') {
-    var hash = window.location.hash.replace('#', '')
-    var parts = hash.split(',')
+    const hash = window.location.hash.replace('#', '')
+    const parts = hash.split(',')
     if (parts.length === 3) {
       center = {
         lat: parseFloat(parts[0]),
@@ -14,8 +14,8 @@ const getMapLocation = (zoom, center) => {
     }
   }
   return {
-    zoom: zoom,
-    center: center
+    zoom,
+    center
   }
 }
 
@@ -35,7 +35,7 @@ const setupPermalink = (map) => {
                 map.getZoom() + 'z'
     const state = {
       zoom: map.getZoom(),
-      center: center
+      center
     }
     window.history.pushState(state, 'map', hash)
   }

@@ -1,0 +1,56 @@
+
+
+/* ---------- Root ---------- */
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+/* ---------- Map ---------- */
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+/* ---------- Leaflet ---------- */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+  font-family: inherit;
+}
+
+/* ---------- Marker ---------- */
+.map-icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50% 50% 50% 0;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+  background: rgba(255, 0, 255, 0.9);
+  position: absolute;
+  transform: rotate(-45deg);
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* ---------- Clusters ---------- */
+.marker-cluster-small,
+.marker-cluster-medium,
+.marker-cluster-large {
+  background-color: rgba(47, 79, 79, 0.6);
+}
+
+.marker-cluster-small div,
+.marker-cluster-medium div,
+.marker-cluster-large div {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+.marker-cluster span {
+  font-weight: bold;
+  color: #000;
+}

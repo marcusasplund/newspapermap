@@ -4,15 +4,19 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.sql
 
 # Dependency directories
 node_modules/
 
 # dotenv environment variables file
 .env
+.env.local
 
 # build stuff
 .parcel-cache
 .cache
 dist
 release
+
+api
