@@ -1,6 +1,7 @@
 {
   "name": "newspapermap",
   "version": "0.0.1",
+  "type": "module",
   "license": "MIT",
   "author": "Marcus Asplund <rootfood@gmail.com> (@marcusasplund)",
   "homepage": "https://github.com/marcusasplund/newspapermap#readme",
@@ -13,33 +14,43 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
-  },
-  "standard": {
-    "ignore": [
-      "dist/",
-      "release/",
-      "oldstuff/"
-    ]
+    "build": "npm run typecheck && vite build",
+    "preview": "vite preview",
+    "lint": "biome lint .",
+    "lint:fix": "biome lint --write .",
+    "typecheck": "tsc --noEmit"
   },
   "browserslist": "> 0.5%, last 2 versions, not dead",
+  "engines": {
+    "node": ">=22.12.0"
+  },
   "devDependencies": {
-    "@suid/vite-plugin": "^0.4.1",
-    "eslint": "^8.11.0",
-    "standard": "*",
-    "typescript": "^5.9.3",
-    "vite": "^6.3.5",
-    "vite-plugin-solid": "^2.11.10"
+    "@biomejs/biome": "^2.6.9",
+    "@solidjs/vite-plugin": "3.0.1",
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/node": "26.6.10",
+    "tailwindcss": "^4.3.5",
+    "tw-animate-css": "1.4.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.8"
+  },
+  "overrides": {
+    "solid-js": {
+      "@solidjs/signals": "2.0.1"
+    },
+    "@solidjs/vite-plugin": {
+      "@solidjs/compiler": "2.0.1"
+    }
   },
   "dependencies": {
-    "@emotion/react": "^11.11.4",
-    "@emotion/styled": "^11.11.5",
-    "@suid/icons-material": "^0.9.0",
-    "@suid/material": "^0.19.0",
-    "leaflet": "^1.9.4",
-    "leaflet.markercluster": "^1.5.3",
-    "places.js": "^1.19.0",
-    "solid-js": "^1.9.11"
+    "@solidjs/web": "2.0.1",
+    "@ui-sdk/core": "0.1.0-beta.10",
+    "@ui-sdk/solid": "0.1.0-beta.10",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "leaflet": "2.0.0-beta.5",
+    "leaflet.markercluster": "2.0.0",
+    "solid-js": "2.0.1",
+    "tailwind-merge": "^3.7.1"
   }
 }

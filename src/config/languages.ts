@@ -22,3 +22,9 @@ export const languages = [
   { code: 'fi', label: 'Suomi', flag: '🇫🇮' },
   { code: 'no', label: 'Norsk', flag: '🇳🇴' }
 ]
+
+export type Language = (typeof languages)[number]
+
+export function isSupportedLanguage(value: unknown): value is string {
+  return typeof value === 'string' && languages.some(language => language.code === value)
+}

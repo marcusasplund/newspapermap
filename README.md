@@ -2,9 +2,17 @@
 [![Build status](https://travis-ci.org/marcusasplund/newspapermap.svg?branch=master)](https://travis-ci.org/marcusasplund/newspapermap)
 
 
-[![Standard - JavaScript Style Guide](https://cdn.rawgit.com/feross/standard/master/badge.svg)](https://github.com/feross/standard) 
-
 # newspapermap
+
+Run `npm run typecheck` to check the TypeScript source with TypeScript 7.0.2.
+Run `npm run lint` to lint the TypeScript and TSX source with Biome.
+Run `npm run lint:fix` to apply safe automatic fixes.
+
+The app requires Node.js 22.12 or later. It uses SolidJS 2.0.1 and local
+components from [solid-ui-next](https://github.com/stefan-karger/solid-ui-next),
+with its Nova styles and UI SDK 0.1.0-beta.10. The component project is experimental.
+Runtime and compiler overrides in `package.json` keep the tested Solid versions aligned.
+Update components from that repository; the legacy Solid UI CLI targets Solid 1.
 
 ## background
 In 2010 we made [https://newspapermap.com](https://newspapermap.com) because we wanted a good way to find international local news.

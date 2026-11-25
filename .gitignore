@@ -19,4 +19,9 @@ node_modules/
 dist
 release
 
-api
+/api/
+
+# Local design previews and browser evidence
+.impeccable/mocks/
+.impeccable/questions/
+.impeccable/review/

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-25T20:05:56.044638+00:00",
+  "title": "Design System: Newspaper Map",
+  "extensions": {
+    "colorMeta": {
+      "atlas-teal": {
+        "role": "primary",
+        "displayName": "Atlas teal"
+      },
+      "atlas-ink": {
+        "role": "neutral",
+        "displayName": "Atlas ink"
+      },
+      "atlas-soft": {
+        "role": "neutral",
+        "displayName": "Atlas soft"
+      },
+      "atlas-muted": {
+        "role": "neutral",
+        "displayName": "Atlas muted"
+      },
+      "atlas-line": {
+        "role": "neutral",
+        "displayName": "Atlas line"
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "White"
+      }
+    },
+    "typographyMeta": {
+      "newspaper": {
+        "displayName": "Publication name",
+        "purpose": "Result names, with a larger related treatment in popups."
+      }
+    },
+    "shadows": [
+      {
+        "name": "atlas-elevation",
+        "value": "0 6px 28px rgb(31 54 59 / 13%)",
+        "purpose": "Floating headers and discovery panel."
+      },
+      {
+        "name": "map-controls",
+        "value": "0 3px 16px rgb(31 54 59 / 14%)",
+        "purpose": "Map control groups."
+      },
+      {
+        "name": "popup",
+        "value": "0 5px 24px rgb(31 54 59 / 20%)",
+        "purpose": "Selected publication popup."
+      }
+    ],
+    "motion": [
+      {
+        "name": "control-transition",
+        "value": "150ms",
+        "purpose": "Search borders, result hover, marker transforms, and mobile disclosure chevron."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Animation and transition duration when reduced motion is requested."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-header",
+        "value": "1120px"
+      },
+      {
+        "name": "compact-panel",
+        "value": "850px"
+      },
+      {
+        "name": "mobile",
+        "value": "640px"
+      },
+      {
+        "name": "narrow-mobile",
+        "value": "360px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Text action",
+      "kind": "button",
+      "refersTo": "text-button",
+      "description": "Compact utility action.",
+      "html": "<button class=\"ds-text\">Search worldwide</button>",
+      "css": ".ds-text{display:inline-flex;padding:0;border:0;border-radius:3px;background:transparent;color:var(--atlas-teal);font:11px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif;cursor:pointer}.ds-text:hover{color:#0a5149;text-decoration:underline;text-underline-offset:3px}.ds-text:focus-visible{outline:2px solid var(--atlas-teal);outline-offset:3px}"
+    },
+    {
+      "name": "Map control",
+      "kind": "button",
+      "refersTo": "map-control",
+      "description": "Square map navigation control.",
+      "html": "<button class=\"ds-map\" aria-label=\"Zoom in\"><svg width=\"19\" height=\"19\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M12 5v14M5 12h14\"/></svg></button>",
+      "css": ".ds-map{display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:8px;background:#fff;color:var(--atlas-ink);box-shadow:0 3px 16px rgb(31 54 59 / 14%);cursor:pointer}.ds-map:hover{background:#eef5f1;color:var(--atlas-teal)}.ds-map:focus-visible{outline:2px solid var(--atlas-teal);outline-offset:3px}"
+    },
+    {
+      "name": "Search field",
+      "kind": "input",
+      "refersTo": "search-field",
+      "description": "Search newspapers by name or domain.",
+      "html": "<label class=\"ds-search\"><input type=\"search\" aria-label=\"Search newspapers\" placeholder=\"Search by name or website\"></label>",
+      "css": ".ds-search{display:flex;align-items:center;height:48px;padding:0 12px;border:1px solid #a5c7bd;border-radius:7px;background:#fff;transition:border-color .15s,box-shadow .15s}.ds-search:focus-within{border-color:var(--atlas-teal);box-shadow:0 0 0 3px rgb(19 119 107 / 10%)}.ds-search input{width:100%;min-width:0;border:0;outline:none;background:transparent;color:var(--atlas-ink);font:13px/1.4 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif}.ds-search input::placeholder{color:var(--atlas-muted)}"
+    },
+    {
+      "name": "Floating container",
+      "kind": "card",
+      "refersTo": "floating-surface",
+      "description": "White tool container over the map.",
+      "html": "<section class=\"ds-surface\">Find a newspaper</section>",
+      "css": ".ds-surface{padding:16px 20px;border-radius:12px;background:#fff;color:var(--atlas-ink);box-shadow:var(--atlas-elevation);font:600 17px/1.4 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif}"
+    },
+    {
+      "name": "Newspaper result",
+      "kind": "custom",
+      "refersTo": "result-row",
+      "description": "Publication name with language and domain metadata.",
+      "html": "<button class=\"ds-result\"><span class=\"ds-name\">Newspaper name</span><span class=\"ds-meta\">English \u00b7 example.com</span></button>",
+      "css": ".ds-result{display:block;width:100%;padding:17px 22px;border:0;border-bottom:1px solid #e9efeb;background:transparent;color:var(--atlas-ink);text-align:left;cursor:pointer;transition:background-color .15s}.ds-result:hover{background:#f7faf8}.ds-result:focus-visible{outline:2px solid var(--atlas-teal);outline-offset:3px}.ds-name{display:block;font:19px/1.25 Georgia,\"Times New Roman\",serif;letter-spacing:-.015em;overflow-wrap:anywhere}.ds-meta{display:block;margin-top:6px;color:var(--atlas-muted);font:11px/1.5 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,Arial,sans-serif}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The atlas index",
+    "overview": "White floating panels sit over a full-screen map. Petrol text and teal selection keep the controls legible against geographic detail. The owner chose this code-led direction for a practical newspaper discovery tool.\n\nCompact controls use a sans-serif stack. Newspaper names use Georgia to distinguish publications from interface labels. Search results remain connected to the map through shared selection states.",
+    "keyCharacteristics": [
+      "White panels with soft elevation over a muted map.",
+      "Compact controls and aligned publication rows.",
+      "Teal emphasis shared by links, markers, and selection."
+    ],
+    "rules": [
+      {
+        "name": "The Shared Selection Rule",
+        "body": "Result selection and its geographic marker use teal emphasis together.",
+        "section": "colors"
+      },
+      {
+        "name": "The Floating Tools Rule",
+        "body": "Elevation separates tools from geography. Result rows remain flat inside their panel.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep the map visible around floating tools.",
+      "Do use serif type for publication names and sans-serif type for controls.",
+      "Do preserve visible keyboard focus and reduced-motion behavior.",
+      "Do connect selected results and markers through teal emphasis."
+    ],
+    "donts": [
+      "Don't merge newspaper language filtering with translation preferences.",
+      "Don't give result rows separate floating-card shadows.",
+      "Don't replace source names or domains with invented geographic metadata."
+    ]
+  }
+}
